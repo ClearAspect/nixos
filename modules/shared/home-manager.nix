@@ -12,6 +12,7 @@ in {
 
   fish = {
     enable = true;
+    catppuccin.enable = true;
     shellAliases = {
       cd = "z ";
       ls = "lsd --color=auto";
@@ -27,15 +28,6 @@ in {
           repo = "nix-env.fish";
           rev = "7b65bd228429e852c8fdfa07601159130a818cfa";
           sha256 = "sha256-RG/0rfhgq6aEKNZ0XwIqOaZ6K5S4+/Y5EEMnIdtfPhk=";
-        };
-      }
-      {
-        name = "catppuccin";
-        src = pkgs.fetchFromGitHub {
-          owner = "catppuccin";
-          repo = "fish";
-          rev = "cc8e4d8fffbdaab07b3979131030b234596f18da";
-          sha256 = "sha256-udiU2TOh0lYL7K7ylbt+BGlSDgCjMpy75vQ98C1kFcc=";
         };
       }
     ];
@@ -96,17 +88,7 @@ in {
 
   bat = {
     enable = true;
-    themes = {
-      Catppuccin_Mocha = {
-        src = pkgs.fetchFromGitHub {
-          owner = "catppuccin";
-          repo = "bat";
-          rev = "d3feec47b16a8e99eabb34cdfbaa115541d374fc";
-          sha256 = "sha256-s0CHTihXlBMCKmbBBb8dUhfgOOQu9PBCQ+uviy7o47w=";
-        };
-        file = "themes/Catppuccin Mocha.tmTheme";
-      };
-    };
+    catppuccin.enable = true;
   };
 
   git = {

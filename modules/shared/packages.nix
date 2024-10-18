@@ -26,7 +26,10 @@ with pkgs; [
 
   lua
   python3
-  # llvmPackages_latest.llvm
+  llvm
+  llvm_18
+  gcc
+  libgcc
   cargo
   cmake
   jdk

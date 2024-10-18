@@ -8,6 +8,7 @@
   xdg_configHome = "/home/${user}/.config";
   shared-programs = import ../shared/home-manager.nix {inherit config pkgs lib;};
   shared-files = import ../shared/files.nix {inherit config pkgs;};
+  # hyprland-mocha = builtins.readFile ./config/hyprMocha.conf;
 in {
   home = {
     enableNixpkgsReleaseCheck = false;
@@ -22,25 +23,155 @@ in {
     enable = true;
     package = pkgs.hyprland;
     xwayland.enable = true;
+    catppuccin.enable = true;
 
     systemd.enable = true;
 
     settings = {
       monitor = [
-        "DP-1,3840x2160@144,0x0,1"
-        "HDMI-A-1,3840x2160@60,-3840x0,1"
+        "DP-1,3840x2160@144,0x0,1.5,bitdepth,10"
+        "HDMI-A-1,3840x2160@60,-2560x0,1.5"
         "Unknown-1, disable"
+      ];
+      workspace = [
+        "1,monitor:DP-1, default:true"
+        "2,monitor:DP-1"
+        "3,monitor:DP-1"
+        "4,monitor:DP-1"
+        "5,monitor:DP-1"
+        "6,monitor:HDMI-A-1, default:true"
+        "7,monitor:HDMI-A-1"
+        "8,monitor:HDMI-A-1"
+        "9,monitor:HDMI-A-1"
+        "10,monitor:HDMI-A-1"
+      ];
+      general = {
+        gaps_in = "5";
+        gaps_out = "5";
+
+        border_size = "2";
+
+        # https://wiki.hyprland.org/Configuring/Variables/#variable-types for info about colors
+        "col.active_border" = "$blue $blue 45deg";
+        "col.inactive_border" = "$surface0";
+
+        # Set Uto true enable resizing windows by clicking and dragging on borders and gaps
+        resize_on_border = "false";
+
+        # Please see https://wiki.hyprland.org/Configuring/Tearing/ before you turn this on
+        allow_tearing = "false";
+
+        layout = "dwindle";
+      };
+
+      decoration = {
+        rounding = "10";
+
+        # Change transparency of focused and unfocused windows
+        active_opacity = "1.0";
+        inactive_opacity = "1.0";
+
+        drop_shadow = "true";
+        shadow_range = "4";
+        shadow_render_power = "3";
+        "col.shadow" = "rgba(1a1a1aee)";
+
+        # https://wiki.hyprland.org/Configuring/Variables/#blur
+        blur = {
+          enabled = "true";
+          size = "3";
+          passes = "5";
+          noise = "0";
+          ignore_opacity = "false";
+          new_optimizations = "true";
+
+          vibrancy = "0.1696";
+        };
+      };
+      animations = {
+        enabled = "true";
+
+        # Default animations, see https://wiki.hyprland.org/Configuring/Animations/ for more
+
+        # bezier = myBezier, 0.05, 0.9, 0.1, 1.05
+
+        # animation = windows, 1, 7, myBezier
+        # animation = windowsOut, 1, 7, default, popin 80%
+        # animation = border, 1, 10, default
+        # animation = borderangle, 1, 8, default
+        # animation = fade, 1, 7, default
+        # animation = workspaces, 1, 3, default # Speed half default
+
+        bezier = [
+          "easeOutBack,0.34, 1.3, 0.64, 1"
+          "easeOutExpo,0.16, 1, 0.3, 1"
+          "linear,0, 0, 1, 1"
+        ];
+        animation = [
+          "windowsOut, 1, 3, easeOutExpo, popin 80%"
+          "workspaces, 1, 8, easeOutExpo, slide"
+          "windows, 1, 4, easeOutBack, popin 80%"
+          "border, 1, 1, linear"
+          "borderangle, 1, 30, linear, loop"
+        ];
+      };
+
+      dwindle = {
+        pseudotile = "true"; # Master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
+        preserve_split = "true"; # You probably want this
+      };
+
+      layerrule = [
+        "blur, logout_dialog"
+        "blur, swaync-control-center"
+        "blur, swaync-notiication-window"
+
+        "ignorezero, swaync-control-center"
+        "ignorezero, swaync-notification-window"
+
+        "ignorealpha 0.5, swaync-control-center"
+        "ignorealpha 0.5, swaync-notification-window"
       ];
 
       "$mainMod" = "SUPER";
       "$terminal" = "kitty";
       "$browser" = "firefox";
+      "$fileManager" = "nautilus";
+      "$menu" = "wofi --show drun";
+      "$wallpaper" = "";
+      "$screenshot" = "hyprshot -m region -m active --clipboard-only";
+      # "$colorscheme" = "noting\n${hyprland-mocha}";
 
       bind = [
         "$mainMod, T, exec, $terminal"
-        "$mainMod, F, exec, $browser"
         "$mainMod, C, killactive"
+        "$mainMod, M, exit"
+        "$mainMod, E, exec, $fileManager"
+        "$mainMod, V, togglefloating"
+        "$mainMod, R, exec, $menu"
+        "$mainMod, P, pseudo" # dwindle
+        "$mainMod, O, togglesplit" # dwindle
 
+        "$mainMod ALT, N, exec, swaync-client -t -sw" # swayNC panel
+        "$mainMod, W, exec, $wallpaper"
+
+        "$mainMod, F, fullscreen"
+
+        "$mainMod SHIFT, P, exec, $screenshot"
+
+        # Move focus with mainMod + vim motions
+        "$mainMod, h, movefocus, l"
+        "$mainMod, l, movefocus, r"
+        "$mainMod, k, movefocus, u"
+        "$mainMod, j, movefocus, d"
+
+        # Move windows with mainMod + SHIFT + vim motions
+        "$mainMod SHIFT, h, movewindow, l"
+        "$mainMod SHIFT, l, movewindow, r"
+        "$mainMod SHIFT, k, movewindow, u"
+        "$mainMod SHIFT, j, movewindow, d"
+
+        # Switch workspaces with mainMod + [0-9]
         "$mainMod, 1, workspace, 1"
         "$mainMod, 2, workspace, 2"
         "$mainMod, 3, workspace, 3"
@@ -50,17 +181,60 @@ in {
         "$mainMod, 7, workspace, 7"
         "$mainMod, 8, workspace, 8"
         "$mainMod, 9, workspace, 9"
-        "$mainMod, 10, workspace, 10"
+        "$mainMod, 0, workspace, 10"
+
+        # Move active window to a workspace with mainMod + SHIFT + [0-9]
+        "$mainMod SHIFT, 1, movetoworkspace, 1"
+        "$mainMod SHIFT, 2, movetoworkspace, 2"
+        "$mainMod SHIFT, 3, movetoworkspace, 3"
+        "$mainMod SHIFT, 4, movetoworkspace, 4"
+        "$mainMod SHIFT, 5, movetoworkspace, 5"
+        "$mainMod SHIFT, 6, movetoworkspace, 6"
+        "$mainMod SHIFT, 7, movetoworkspace, 7"
+        "$mainMod SHIFT, 8, movetoworkspace, 8"
+        "$mainMod SHIFT, 9, movetoworkspace, 9"
+        "$mainMod SHIFT, 0, movetoworkspace, 10"
+
+        # Example special workspace (scratchpad)
+        "$mainMod, S, togglespecialworkspace, magic"
+        "$mainMod SHIFT, S, movetoworkspace, special:magic"
+
+        # Scroll through existing workspaces with mainMod + scroll
+        "$mainMod, mouse_down, workspace, e+1"
+        "$mainMod, mouse_up, workspace, e-1"
+
+        # Volume Control Bindings
+        "$mainMod, XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+
+        # Media Control Bindings
+        "$mainMod, XF86AudioPlay, exec, playerctl play-pause"
+        "$mainMod, XF86AudioNext, exec, playerctl next"
+        "$mainMod, XF86AudioPrev, exec, playerctl previous"
       ];
-      # extraConfig = ''
-      #   env = XCURSOR_SIZE,24
-      #   env = HYPRCURSOR_SIZE,24
-      #   env = LIBVA_DRIVER_NAME,nvidia
-      #   env = XDG_SESSION_TYPE,wayland
-      #   env = GBM_BACKEND,nvidia-drm
-      #   env = __GLX_VENDOR_LIBRARY_NAME,nvida
-      #   env = __GL_GSYNC_ALLOWED
-      # '';
+      bindm = [
+        # Move/resize windows with mainMod + LMB/RMB and dragging
+
+        "$mainMod, mouse:272, movewindow"
+        "$mainMod, mouse:273, resizewindow"
+      ];
+      input = {
+        kb_layout = "us";
+
+        follow_mouse = "1";
+        force_no_accel = "1";
+        accel_profile = "fat";
+
+        sensitivity = "0"; # -1.0 - 1.0, 0 means no modification.
+
+        touchpad = {
+          natural_scroll = "false";
+        };
+      };
+      # binde = [
+      #   # Volume Control Bindings
+      #   "XF86AudioRaiseVolume, exec, wpctl set-volume -l 1.4 @DEFAULT_AUDIO_SINK@ 5%+"
+      #   "XF86AudioLowerVolume, exec, wpctl set-volume -l 1.4 @DEFAULT_AUDIO_SINK@ 5%-"
+      # ];
     };
   };
 
@@ -68,15 +242,16 @@ in {
   gtk = {
     enable = true;
     cursorTheme = {
-      name = "Apple Cursor";
+      name = "macOS";
+      size = 24;
       package = pkgs.apple-cursor;
     };
     iconTheme = {
-      name = "WhiteSur Icons";
+      name = "WhiteSur";
       package = pkgs.whitesur-icon-theme;
     };
     theme = {
-      name = "WhiteSur Theme";
+      name = "WhiteSur-Dark";
       package = pkgs.whitesur-gtk-theme;
     };
   };

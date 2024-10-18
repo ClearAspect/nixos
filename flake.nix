@@ -28,7 +28,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    catppuccin.url = "github:catppuccin/nix";
+
     zig.url = "github:mitchellh/zig-overlay";
+
+    stylix.url = "github:danth/stylix";
+    apple-fonts.url = "github:Lyndeno/apple-fonts.nix";
   };
 
   outputs = {
@@ -42,6 +47,9 @@
     nixpkgs,
     disko,
     zig,
+    catppuccin,
+    stylix,
+    apple-fonts,
   } @ inputs: let
     user = "roanm";
     linuxSystems = ["x86_64-linux" "aarch64-linux"];
@@ -99,6 +107,7 @@
             {nixpkgs.overlays = [zig.overlays.default];}
             home-manager.darwinModules.home-manager
             nix-homebrew.darwinModules.nix-homebrew
+            catppuccin.nixosModules.catppuccin
             {
               nix-homebrew = {
                 inherit user;
@@ -125,11 +134,18 @@
           {nixpkgs.overlays = [zig.overlays.default];}
           disko.nixosModules.disko
           home-manager.nixosModules.home-manager
+          catppuccin.nixosModules.catppuccin
+          stylix.nixosModules.stylix
           {
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              users.${user} = import ./modules/nixos/home-manager.nix;
+              users.${user} = {
+                imports = [
+                  ./modules/nixos/home-manager.nix
+                  catppuccin.homeManagerModules.catppuccin
+                ];
+              };
             };
           }
           ./hosts/nixos

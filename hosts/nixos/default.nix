@@ -26,38 +26,83 @@ in {
         device = "nodev";
         efiSupport = true;
         useOSProber = true;
+        configurationLimit = 4;
+
+        catppuccin.enable = true;
       };
       efi.canTouchEfiVariables = true;
     };
-    initrd.availableKernelModules = ["xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod"];
-    # Uncomment for AMD GPU
-    # initrd.kernelModules = [ "amdgpu" ];
+    plymouth.enable = true;
+    initrd.availableKernelModules = [
+      "xhci_pci"
+      "ahci"
+      "nvme"
+      "usbhid"
+      "usb_storage"
+      "sd_mod"
+    ];
+    #initrd.kernelModules = [
+    # "nvidia"
+    #"nvidia_modeset"
+    # "nvidia_uvm"
+    # "nvidia_drm"
+    # ];
 
-    initrd.kernelModules = ["nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm"];
+    kernelPackages = pkgs.linuxPackages_6_10;
+    # kernelPatches = [
+    #   {
+    #     name = "crashdump-config";
+    #     patch = null;
+    #     extraConfig = ''
+    #       DRM_SIMPLEDRM n
+    #       FB_SIMPLE n
+    #     '';
+    #   }
+    # ];
 
-    kernelPackages = pkgs.linuxPackages_latest;
     kernelModules = ["uinput"];
-    kernelParams = ["nvidia_drm.modeset=1" "nvidia.NVreg_PreserveVideoMemoryAllocations=1" "nvidia.NVreg_EnableGpuFirmware=0"];
+    kernelParams = [
+      "nvidia-drm.modeset=1"
+      "nvidia-drm.fbdev=1"
+      "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
+      "nvidia.NVreg_EnableGpuFirmware=0"
+    ];
   };
 
   # Setup Nvidia Drivers
-  hardware.graphics.enable = true; # OpenGL
-  services.xserver = {
+  hardware.graphics = {
     enable = true;
+    enable32Bit = true;
+  };
+  services = {
+    xserver = {
+      enable = true;
 
-    videoDrivers = ["nvidia"];
+      videoDrivers = ["nvidia"];
 
-    # Uncomment for Nvidia GPU
-    # This helps fix tearing of windows for Nvidia cards
-    # screenSection = ''
-    #   Option       "metamodes" "nvidia-auto-select +0+0 {ForceFullCompositionPipeline=On}"
-    #   Option       "AllowIndirectGLXProtocol" "off"
-    #   Option       "TripleBuffer" "on"
-    # '';
+      # Uncomment for Nvidia GPU
+      # This helps fix tearing of windows for Nvidia cards
+      # screenSection = ''
+      #   Option       "metamodes" "nvidia-auto-select +0+0 {ForceFullCompositionPipeline=On}"
+      #   Option       "AllowIndirectGLXProtocol" "off"
+      #   Option       "TripleBuffer" "on"
+      # '';
 
-    # Turn Caps Lock into Ctrl
-    xkb.layout = "us";
-    # xkbOptions = "ctrl:nocaps";
+      # Turn Caps Lock into Ctrl
+      xkb.layout = "us";
+      # xkbOptions = "ctrl:nocaps";
+
+      xrandrHeads = [
+        {
+          output = "DP-1";
+          primary = true;
+        }
+        {
+          output = "HDMI-A-1";
+          monitorConfig = ''Option "Enable" "false"'';
+        }
+      ];
+    };
   };
   hardware.nvidia = {
     modesetting.enable = true;
@@ -66,7 +111,7 @@ in {
     # forceFullCompositionPipeline = true;
     open = false;
     nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
+    package = config.boot.kernelPackages.nvidiaPackages.latest;
     # prime = {
     #   # sync.enable = true;
     #   nvidiaBusId = "PCI:1:0:0";
@@ -119,12 +164,31 @@ in {
     };
   };
 
+  environment.sessionVariables = {
+    XCURSOR_THEME = "macOS";
+    XCURSOR_SIZE = "24";
+    HYPRCURSOR_THEME = "macOS";
+    HYPRCURSOR_SIZE = "24";
+    LIBVA_DRIVER_NAME = "nvidia";
+    XDG_SESSION_TYPE = "wayland";
+    GBM_BACKEND = "nvidia-drm";
+    __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+    __GL_GSYNC_ALLOWED = "";
+    NIXOS_OZONE_WL = "1";
+    QT_QPA_PLATFORM = "wayland";
+
+    NIKPKGS_ALLOW_UNFREE = "1";
+  };
+
   services = {
     # Better support for general peripherals
     libinput.enable = true;
 
     displayManager.sddm = {
       enable = true;
+      wayland.enable = true;
+      catppuccin.enable = true;
+      package = pkgs.kdePackages.sddm;
     };
 
     pipewire = {
@@ -205,13 +269,17 @@ in {
 
   fonts.packages = with pkgs; [
     font-awesome
+    (nerdfonts.override {fonts = ["CascadiaCode" "NerdFontsSymbolsOnly"];})
   ];
 
+  stylix.fonts = {
+    serif = {
+      package = inputs.apple-fonts.packages.${pkgs.system}.sf-pro-nerd;
+      name = "SFProDisplay Nerd Font";
+    };
+  };
+
   environment.systemPackages = with pkgs; [
-    kitty
-    waybar
-    hyprland
-    xdg-desktop-portal-hyprland
     lshw
     vim
     coreutils

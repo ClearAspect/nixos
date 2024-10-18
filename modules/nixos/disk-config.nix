@@ -2,17 +2,17 @@ _: {
   # This formats the disk with the ext4 filesystem
   # Other examples found here: https://github.com/nix-community/disko/tree/master/example
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/59759061-0e1c-4a7e-9d3a-899aac9b3959";
+    { device = "/dev/disk/by-uuid/e7bdb2d1-59b6-48e0-bd18-84057579384a";
       fsType = "ext4";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/40D8-098D";
+    { device = "/dev/disk/by-uuid/B8C1-84AB";
       fsType = "vfat";
       options = [ "fmask=0077" "dmask=0077" ];
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/e730cfd0-bd04-4760-92e2-e467011baf46"; }
+    [ { device = "/dev/disk/by-uuid/0a5f0cee-33f9-4f04-8b92-59e2f4bdd1c1"; }
     ];
 }
