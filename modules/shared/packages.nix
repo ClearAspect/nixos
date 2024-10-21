@@ -24,12 +24,11 @@ with pkgs; [
   # Fonts
   cozette
 
+  # llvm
+  # llvm_18
+  # gcc
   lua
   python3
-  llvm
-  llvm_18
-  gcc
-  libgcc
   cargo
   cmake
   jdk

@@ -6,16 +6,15 @@
 }: let
   user = "roanm";
   xdg_configHome = "/home/${user}/.config";
-  shared-programs = import ../shared/home-manager.nix {inherit config pkgs lib;};
-  shared-files = import ../shared/files.nix {inherit config pkgs;};
-  # hyprland-mocha = builtins.readFile ./config/hyprMocha.conf;
+  sharedPrograms = import ../shared/home-manager.nix {inherit config pkgs lib;};
+  sharedFiles = import ../shared/files.nix {inherit config pkgs;};
 in {
   home = {
     enableNixpkgsReleaseCheck = false;
     username = "${user}";
     homeDirectory = "/home/${user}";
     packages = pkgs.callPackage ./packages.nix {};
-    file = shared-files // import ./files.nix {inherit user;};
+    file = sharedFiles // import ./files.nix {inherit user config pkgs;};
     stateVersion = "21.05";
   };
 
@@ -140,7 +139,6 @@ in {
       "$menu" = "wofi --show drun";
       "$wallpaper" = "";
       "$screenshot" = "hyprshot -m region -m active --clipboard-only";
-      # "$colorscheme" = "noting\n${hyprland-mocha}";
 
       bind = [
         "$mainMod, T, exec, $terminal"
@@ -315,5 +313,5 @@ in {
     # };
   };
 
-  programs = shared-programs // {};
+  programs = sharedPrograms // {};
 }

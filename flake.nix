@@ -107,7 +107,17 @@
             {nixpkgs.overlays = [zig.overlays.default];}
             home-manager.darwinModules.home-manager
             nix-homebrew.darwinModules.nix-homebrew
-            catppuccin.nixosModules.catppuccin
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                users.${user} = {
+                  imports = [
+                    ./modules/darwin/home-manager.nix
+                    catppuccin.homeManagerModules.catppuccin
+                  ];
+                };
+              };
+            }
             {
               nix-homebrew = {
                 inherit user;

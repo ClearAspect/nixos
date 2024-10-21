@@ -43,7 +43,7 @@ in {
     ];
     #initrd.kernelModules = [
     # "nvidia"
-    #"nvidia_modeset"
+    # "nvidia_modeset"
     # "nvidia_uvm"
     # "nvidia_drm"
     # ];
@@ -232,7 +232,7 @@ in {
     pulseaudio.enable = false;
   };
 
-  # It's me, it's you, it's everyone
+  # Users / Me
   users.users = {
     ${user} = {
       home = "/home/roanm";
