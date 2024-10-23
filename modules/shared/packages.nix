@@ -1,18 +1,16 @@
 {pkgs}:
 with pkgs; [
+  kitty
+
   # General packages for development and system management
-  bat
   btop
   coreutils
   fastfetch
-  fish
-  kitty
-  git-credential-manager
   lazygit
   lsd
   neovim
-  oh-my-posh
   openssh
+  oh-my-posh
   killall
   yazi
   wget
