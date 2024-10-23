@@ -1,4 +1,6 @@
 {
+  agenix,
+  ghostty,
   config,
   lib,
   inputs,
@@ -7,11 +9,12 @@
   ...
 }: let
   user = "roanm";
-  keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOk8iAnIaa1deoc7jw8YACPNVka1ZFJxhnU4G74TmS+p"];
+  keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEwqozRS0wVI+dZj3lUyiRzxaKK3hPKWDcwlMdjI1gz9 roanmason@live.ca"];
 in {
   imports = [
     ../../modules/nixos/disk-config.nix
     ../../modules/shared
+    agenix.nixosModules.default
   ];
 
   # Use the systemd-boot EFI boot loader.
@@ -48,7 +51,7 @@ in {
     # "nvidia_drm"
     # ];
 
-    kernelPackages = pkgs.linuxPackages_6_10;
+    kernelPackages = pkgs.linuxPackages_latest;
     # kernelPatches = [
     #   {
     #     name = "crashdump-config";
@@ -96,12 +99,14 @@ in {
         {
           output = "DP-1";
           primary = true;
+          monitorConfig = ''Option "Enable" "true"'';
         }
         {
           output = "HDMI-A-1";
           monitorConfig = ''Option "Enable" "false"'';
         }
       ];
+      exportConfiguration = true;
     };
   };
   hardware.nvidia = {
@@ -156,7 +161,20 @@ in {
     dconf.enable = true;
 
     # My shell
-    fish.enable = true;
+    # fish executed in bash if it is interactive shell
+    # bash = {
+    #   enable = true;
+    #   interactiveShellInit = ''
+    #     if [[ $(${pkgs.procps}/bin/ps -o ucomm | grep fish | sort | uniq) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
+    #     then
+    #       shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=""
+    #       exec ${pkgs.fish}/bin/fish $LOGIN_OPTION
+    #     fi
+    #   '';
+    # };
+    fish = {
+      enable = true;
+    };
 
     hyprland = {
       enable = true;
@@ -233,21 +251,23 @@ in {
   };
 
   # Users / Me
-  users.users = {
-    ${user} = {
-      home = "/home/roanm";
-      createHome = true;
-      isNormalUser = true;
-      extraGroups = [
-        "wheel" # Enable ‘sudo’ for the user.
-        "docker"
-      ];
-      shell = pkgs.fish;
-      openssh.authorizedKeys.keys = keys;
-    };
 
-    root = {
-      openssh.authorizedKeys.keys = keys;
+  users = {
+    users = {
+      ${user} = {
+        home = "/home/roanm";
+        createHome = true;
+        isNormalUser = true;
+        extraGroups = [
+          "wheel" # Enable ‘sudo’ for the user.
+          "docker"
+        ];
+        shell = pkgs.fish;
+        openssh.authorizedKeys.keys = keys;
+      };
+      root = {
+        openssh.authorizedKeys.keys = keys;
+      };
     };
   };
 
@@ -280,6 +300,8 @@ in {
   };
 
   environment.systemPackages = with pkgs; [
+    ghostty.packages.x86_64-linux.default
+    agenix.packages."${pkgs.system}".default # "x86_64-linux"
     lshw
     vim
     coreutils

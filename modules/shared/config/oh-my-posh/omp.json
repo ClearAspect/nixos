@@ -13,6 +13,7 @@
     "yellow": "#F9E2AF",
     "green": "#A6E3A1",
     "blue": "#89B4FA",
+    "sapphire": "#74C7EC",
     "lavender": "#B4BEFE",
     "text": "#CDD6F4",
     "surface0": "#313244",
@@ -40,7 +41,7 @@
           "powerline_symbol": "\ue0b4",
           "foreground": "p:crust",
           "background": "p:blue",
-          "template": "{{ .UserName }} "
+          "template": "{{.UserName}} "
         },
         {
           "type": "path",
@@ -74,6 +75,14 @@
             "revert_icon": "\uf0e2 ",
             "tag_icon": "\uf412 "
           }
+        },
+        {
+          "type": "nix-shell",
+          "style": "powerline",
+          "powerline_symbol": "\ue0b4",
+          "foreground": "p:blue",
+          "background": "transparent",
+          "template": " (nix-{{ .Type }})"
         },
         {
           "type": "text",

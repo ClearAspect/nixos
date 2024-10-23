@@ -1,0 +1,21 @@
+theme = catppuccin-mocha
+
+font-size = 14
+
+font-family = MonoLisa
+font-style = Medium
+font-style-bold = Bold
+font-style-italic = Medium Italic
+font-style-bold-italic = Bold Italic
+
+font-feature = zero
+font-feature = calt
+font-feature = liga
+font-feature = ss11 
+font-feature = ss02
+
+cursor-style-blink = true
+
+# background-opacity = 0.66
+# background-blur-radius = 20
+

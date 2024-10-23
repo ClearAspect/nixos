@@ -6,7 +6,6 @@ in
   ++ [
     waybar
     wofi
-    xdg-desktop-portal-hyprland
     kitty
     firefox
     vesktop
@@ -20,4 +19,7 @@ in
     apple-cursor
     whitesur-gtk-theme
     whitesur-icon-theme
+
+    xdg-desktop-portal-hyprland
+    wl-clipboard
   ]
