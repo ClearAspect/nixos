@@ -1,4 +1,5 @@
 {
+  agenix,
   config,
   pkgs,
   ...
@@ -8,14 +9,33 @@ in {
   imports = [
     ../../modules/shared
     ../../modules/darwin/dock/default.nix
+    agenix.darwinModules.default
   ];
 
   # Users / Me
-  users.users.${user} = {
-    name = "${user}";
-    home = "/Users/${user}";
-    isHidden = false;
-    shell = pkgs.fish;
+  users = {
+    users.${user} = {
+      name = "${user}";
+      home = "/Users/${user}";
+      isHidden = false;
+      shell = pkgs.fish;
+    };
+  };
+
+  # My shell
+  # fish executed in bash if it is interactive shell
+  # programs.bash = {
+  #   enable = true;
+  #   interactiveShellInit = ''
+  #     if [[ $(${pkgs.procps}/bin/ps -o ucomm | grep fish | sort | uniq) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
+  #     then
+  #       shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=""
+  #       exec ${pkgs.fish}/bin/fish $LOGIN_OPTION
+  #     fi
+  #   '';
+  # };
+  programs.fish = {
+    enable = true;
   };
 
   homebrew = {
@@ -81,7 +101,7 @@ in {
         AppleShowAllExtensions = true;
         ApplePressAndHoldEnabled = false;
 
-        KeyRepeat = 6; # Values: 120, 90, 60, 30, 12, 6, 2
+        KeyRepeat = 2; # Values: 120, 90, 60, 30, 12, 6, 2
         InitialKeyRepeat = 25; # Values: 120, 94, 68, 35, 25, 15
 
         "com.apple.mouse.tapBehavior" = 1;
@@ -127,5 +147,6 @@ in {
     {path = "/Applications/Firefox.app/";}
     {path = "/Applications/Discord.app/";}
     {path = "/Applications/Kitty.app/";}
+    {path = "/Applications/Ghostty.app/";}
   ];
 }

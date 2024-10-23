@@ -33,6 +33,11 @@ in {
     ];
   };
 
+  oh-my-posh = {
+    enable = true;
+    settings = builtins.fromJSON (builtins.unsafeDiscardStringContext (builtins.readFile ./config/oh-my-posh/omp.json));
+  };
+
   zoxide = {
     enable = true;
     enableFishIntegration = true;
@@ -81,11 +86,6 @@ in {
 
   fzf.enable = true;
 
-  oh-my-posh = {
-    enable = true;
-    settings = builtins.fromJSON (builtins.unsafeDiscardStringContext (builtins.readFile ./config/oh-my-posh/omp.json));
-  };
-
   bat = {
     enable = true;
     catppuccin.enable = true;
@@ -104,8 +104,8 @@ in {
         editor = "nvim";
         # autocrlf = "input";
       };
-      credential.credentialStore = "gpg";
-      credential.helper = "manager";
+      # credential.credentialStore = "gpg";
+      # credential.helper = "manager";
     };
   };
 
@@ -121,6 +121,25 @@ in {
         "/Users/${user}/.ssh/config_external"
       )
     ];
+    extraConfig = ''
+      Host localhomeserver
+      	HostName 192.168.10.224
+      	User super
+      	Port 22
+
+      Host remotehomeserver
+      	HostName 99.226.10.150
+      	User super
+      	Port 22
+
+      Host roanmDesktop
+      	HostName 192.168.10.248
+      	User roanm
+      	Port 22
+      	ForwardAgent yes
+
+      VisualHostKey=yes
+    '';
   };
 
   tmux = {
