@@ -7,7 +7,6 @@ in
     waybar
     wofi
     kitty
-    ghostty.packages.x86_64-linux.default
     firefox
     vesktop
 

@@ -14,7 +14,7 @@ font-feature = liga
 font-feature = ss11 
 font-feature = ss02
 
-cursor-style-blink = true
+gtk-titlebar = false
 
 # background-opacity = 0.66
 # background-blur-radius = 20

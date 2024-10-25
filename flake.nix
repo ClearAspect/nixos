@@ -36,9 +36,6 @@
     # Best Terminal Emulator
     ghostty.url = "git+ssh://git@github.com/ghostty-org/ghostty";
 
-    # Best Terminal Emulator
-    ghostty.url = "git+ssh://git@github.com/ghostty-org/ghostty";
-
     # Best Colour Scheme
     catppuccin.url = "github:catppuccin/nix";
 

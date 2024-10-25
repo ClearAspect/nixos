@@ -133,7 +133,7 @@ in {
       ];
 
       "$mainMod" = "SUPER";
-      "$terminal" = "kitty";
+      "$terminal" = "ghostty";
       "$browser" = "firefox";
       "$fileManager" = "nautilus";
       "$menu" = "wofi --show drun";
