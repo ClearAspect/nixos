@@ -2,7 +2,7 @@
   description = "Starter Configuration for MacOS and NixOS";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     agenix.url = "github:ryantm/agenix";
     home-manager.url = "github:nix-community/home-manager";
     darwin = {
@@ -36,8 +36,13 @@
     # Best Terminal Emulator
     ghostty.url = "git+ssh://git@github.com/ghostty-org/ghostty";
 
+    # Best Terminal Emulator
+    ghostty.url = "git+ssh://git@github.com/ghostty-org/ghostty";
+
+    # Best Colour Scheme
     catppuccin.url = "github:catppuccin/nix";
 
+    # Nightly Zig
     zig.url = "github:mitchellh/zig-overlay";
 
     stylix.url = "github:danth/stylix";

@@ -1,5 +1,6 @@
 {
   agenix,
+  ghostty,
   config,
   lib,
   inputs,
@@ -50,7 +51,7 @@ in {
     # "nvidia_drm"
     # ];
 
-    kernelPackages = pkgs.linuxPackages_6_10;
+    kernelPackages = pkgs.linuxPackages_latest;
     # kernelPatches = [
     #   {
     #     name = "crashdump-config";
@@ -98,12 +99,14 @@ in {
         {
           output = "DP-1";
           primary = true;
+          monitorConfig = ''Option "Enable" "true"'';
         }
         {
           output = "HDMI-A-1";
           monitorConfig = ''Option "Enable" "false"'';
         }
       ];
+      exportConfiguration = true;
     };
   };
   hardware.nvidia = {
@@ -169,7 +172,7 @@ in {
     #     fi
     #   '';
     # };
-    programs.fish = {
+    fish = {
       enable = true;
     };
 
@@ -297,6 +300,7 @@ in {
   };
 
   environment.systemPackages = with pkgs; [
+    ghostty.packages.x86_64-linux.default
     agenix.packages."${pkgs.system}".default # "x86_64-linux"
     lshw
     vim

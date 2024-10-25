@@ -45,10 +45,10 @@ in {
         "10,monitor:HDMI-A-1"
       ];
       general = {
-        gaps_in = "5";
-        gaps_out = "5";
+        gaps_in = "4";
+        gaps_out = "4";
 
-        border_size = "2";
+        border_size = "1";
 
         # https://wiki.hyprland.org/Configuring/Variables/#variable-types for info about colors
         "col.active_border" = "$blue $blue 45deg";

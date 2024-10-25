@@ -6,7 +6,6 @@ in
   ++ [
     waybar
     wofi
-    xdg-desktop-portal-hyprland
     kitty
     ghostty.packages.x86_64-linux.default
     firefox
@@ -21,4 +20,7 @@ in
     apple-cursor
     whitesur-gtk-theme
     whitesur-icon-theme
+
+    xdg-desktop-portal-hyprland
+    wl-clipboard
   ]
