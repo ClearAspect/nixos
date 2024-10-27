@@ -34,6 +34,7 @@ in {
         catppuccin.enable = true;
       };
       efi.canTouchEfiVariables = true;
+      timeout = null;
     };
     plymouth.enable = true;
     initrd.availableKernelModules = [
@@ -51,7 +52,7 @@ in {
     # "nvidia_drm"
     # ];
 
-    kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages_6_9;
     # kernelPatches = [
     #   {
     #     name = "crashdump-config";
