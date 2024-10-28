@@ -4,17 +4,19 @@ with pkgs; let
 in
   shared-packages
   ++ [
-    waybar
     wofi
     kitty
     firefox
     vesktop
+    rstudio
+    eclipses.eclipse-java
 
     nautilus
     gnome-font-viewer
     pavucontrol
     dconf-editor
     nwg-look
+    wlogout
 
     apple-cursor
     whitesur-gtk-theme

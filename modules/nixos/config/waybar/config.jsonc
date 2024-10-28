@@ -1,0 +1,96 @@
+{
+  "include": "~/.config/waybar/modules",
+  "layer": "top",
+  "position": "top",
+  "height": 12,
+  "margin-left": 10,
+  "margin-right": 10,
+  "margin-top": 2,
+
+  "modules-left": ["hyprland/window"],
+
+  "modules-center": ["hyprland/workspaces"],
+
+  "modules-right": [
+    // "mpris",
+    // "group/motherboard",
+    // "group/laptop",
+    "tray",
+    "custom/pacman",
+    "custom/pulseaudioicon",
+    "pulseaudio",
+    "custom/networkicon",
+    "network",
+    "custom/clockicon",
+    "clock",
+    "custom/power",
+  ],
+
+  "hyprland/window": {
+    "format": " {} ",
+    "max-length": 80,
+  },
+
+  // Additional format / customize modules
+
+  "custom/separator#blank": {
+    "format": "",
+    "interval": "once",
+    "tooltip": false,
+  },
+
+  "custom/pacman": {
+    "format": " {} updates",
+    "interval": 600,
+    "exec": "checkupdates | wc -l",
+    "exec-if": "exit 0",
+    "signal": 8,
+    "tooltip": false,
+  },
+
+  "custom/power": {
+    "format": " ",
+    "on-click": "wlogout -C $HOME/.config/wlogout/nova.css -l $HOME/.config/wlogout/layout -b 5 -B 400 -T 400",
+    "tooltip": false,
+  },
+
+  "custom/clockicon": {
+    "format": "󰥔",
+    "tooltip": false,
+  },
+
+  "clock": {
+    "format": "{:%I:%M %p}", //for AM/PM
+    "tooltip": false,
+  },
+
+  "custom/pulseaudioicon": {
+    "format": "",
+    "icon-size": 20,
+    "tooltip": false,
+  },
+
+  "pulseaudio": {
+    "format": "{volume}",
+    "tooltip": false,
+  },
+
+  "custom/networkicon": {
+    "format": "󰤨",
+    "tooltip": false,
+  },
+
+  "network": {
+    "format": "connected",
+    "format-wifi": "connected",
+    "format-ethernet": "connected",
+    "format-disconnected": "disconnected",
+    "tooltip-format-ethernet": "{ipaddr}",
+  },
+
+  "tray": {
+    "icon-size": 15,
+    "spacing": 8,
+    "tooltip": false,
+  },
+}

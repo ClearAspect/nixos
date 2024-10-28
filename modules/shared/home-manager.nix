@@ -25,6 +25,12 @@ in {
     #       source "$GHOSTTY_RESOURCES_DIR/shell-integration/fish/vendor_conf.d/ghostty-shell-integration.fish"
     #   end
     # '';
+    shellInitLast = ''
+      if not pgrep -u $USER ssh-agent
+          eval (ssh-agent -c)
+          ssh-add
+      end
+    '';
     plugins = [
       {
         name = "nix-env";

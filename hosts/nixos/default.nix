@@ -34,7 +34,7 @@ in {
         catppuccin.enable = true;
       };
       efi.canTouchEfiVariables = true;
-      timeout = null;
+      timeout = 30;
     };
     plymouth.enable = true;
     initrd.availableKernelModules = [
@@ -52,7 +52,8 @@ in {
     # "nvidia_drm"
     # ];
 
-    kernelPackages = pkgs.linuxPackages_6_9;
+    kernelPackages = pkgs.linuxPackages_latest;
+    extraModulePackages = [config.boot.kernelPackages.nvidia_x11_beta];
     # kernelPatches = [
     #   {
     #     name = "crashdump-config";
@@ -197,6 +198,8 @@ in {
     QT_QPA_PLATFORM = "wayland";
 
     NIKPKGS_ALLOW_UNFREE = "1";
+
+    EDITOR = "nvim";
   };
 
   services = {

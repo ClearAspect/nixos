@@ -1,0 +1,170 @@
+@import "colors/catppuccin-themes/mocha.css";
+
+* {
+  font-family: "MonoLisa", "Symbols Nerd Font Mono", "FontAwesome";
+  font-weight: bold;
+  min-height: 0;
+  /* set font-size to 100% if font scaling is set to 1.00 using nwg-look */
+  font-size: 100%;
+  font-feature-settings: '"calt", "liga", "zero", "ss02", "ss11"';
+  padding: 1px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+/* This section can be use if you want to separate waybar modules */
+.modules-left {
+  background: @base;
+  border: 0px solid @overlay0;
+  border-radius: 10px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.modules-center {
+  background: @base;
+  border: 0px solid @overlay0;
+  border-radius: 10px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.modules-right {
+  background: @base;
+  border: 0px solid @overlay0;
+  border-radius: 10px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+window#waybar {
+  transition-property: background-color;
+  transition-duration: 0.5s;
+  background: transparent;
+  /* border: 2px solid @surface0; */
+  /* background: @base; */
+  border-radius: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+window#waybar.hidden {
+  opacity: 0.2;
+}
+
+window#waybar.empty #window {
+  background: none;
+  padding: 0;
+  margin: 0;
+  opacity: 0;
+}
+
+#workspaces button {
+  box-shadow: none;
+  text-shadow: none;
+  padding: 0px;
+  border-radius: 9px;
+  padding-left: 4px;
+  padding-right: 4px;
+  animation: gradient_f 20s ease-in infinite;
+  transition: all 0.5s cubic-bezier(0.55, -0.68, 0.48, 1.682);
+}
+
+#workspaces button:hover {
+  border-radius: 10px;
+  color: @overlay0;
+  background-color: @surface0;
+  padding-left: 2px;
+  padding-right: 2px;
+  animation: gradient_f 20s ease-in infinite;
+  transition: all 0.3s cubic-bezier(0.55, -0.68, 0.48, 1.682);
+}
+
+#workspaces button.persistent {
+  color: @surface1;
+  border-radius: 10px;
+}
+
+#workspaces button.active {
+  color: @peach;
+  border-radius: 10px;
+  padding-left: 8px;
+  padding-right: 8px;
+  animation: gradient_f 20s ease-in infinite;
+  transition: all 0.3s cubic-bezier(0.55, -0.68, 0.48, 1.682);
+}
+
+#workspaces button.urgent {
+  color: @red;
+  border-radius: 0px;
+}
+
+#taskbar button.active {
+  padding-left: 8px;
+  padding-right: 8px;
+  animation: gradient_f 20s ease-in infinite;
+  transition: all 0.3s cubic-bezier(0.55, -0.68, 0.48, 1.682);
+}
+
+#taskbar button:hover {
+  padding-left: 2px;
+  padding-right: 2px;
+  animation: gradient_f 20s ease-in infinite;
+  transition: all 0.3s cubic-bezier(0.55, -0.68, 0.48, 1.682);
+}
+
+#custom-pulseaudioicon {
+  color: @base;
+  background: @mauve;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#pulseaudio {
+  color: @mauve;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#custom-clockicon {
+  color: @base;
+  background: @blue;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#clock {
+  color: @blue;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#custom-networkicon {
+  color: @base;
+  background: @pink;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#network {
+  color: @pink;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#custom-pacman {
+  color: @green;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#custom-power {
+  color: @red;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#tray {
+  padding-left: 10px;
+  padding-right: 10px;
+}
