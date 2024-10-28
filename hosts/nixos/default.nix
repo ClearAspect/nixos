@@ -116,7 +116,7 @@ in {
     # forceFullCompositionPipeline = true;
     open = false;
     nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.latest;
+    package = config.boot.kernelPackages.nvidiaPackages.beta;
     # prime = {
     #   # sync.enable = true;
     #   nvidiaBusId = "PCI:1:0:0";
