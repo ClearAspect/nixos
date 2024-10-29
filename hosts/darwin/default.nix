@@ -88,10 +88,6 @@ in {
   system.checks.verifyNixPath = false;
   security.pam.enableSudoTouchIdAuth = true;
 
-  environment.sessionVariables = {
-    EDITOR = "nvim";
-  };
-
   environment.systemPackages = with pkgs;
     [
     ]
