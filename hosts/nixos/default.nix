@@ -105,10 +105,10 @@ in {
         }
         {
           output = "HDMI-A-1";
+          primary = false;
           monitorConfig = ''Option "Enable" "false"'';
         }
       ];
-      exportConfiguration = true;
     };
   };
   hardware.nvidia = {
@@ -211,6 +211,10 @@ in {
       wayland.enable = true;
       catppuccin.enable = true;
       package = pkgs.kdePackages.sddm;
+    };
+
+    autorandr = {
+      enable = true;
     };
 
     pipewire = {
