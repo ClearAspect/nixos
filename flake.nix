@@ -39,11 +39,11 @@
     # Best Colour Scheme
     catppuccin.url = "github:catppuccin/nix";
 
+    # HyprPanel
+    hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
+
     # Nightly Zig
     zig.url = "github:mitchellh/zig-overlay";
-
-    stylix.url = "github:danth/stylix";
-    apple-fonts.url = "github:Lyndeno/apple-fonts.nix";
   };
 
   outputs = {
@@ -61,8 +61,7 @@
     ghostty,
     zig,
     catppuccin,
-    stylix,
-    apple-fonts,
+    hyprpanel,
   } @ inputs: let
     user = "roanm";
     linuxSystems = ["x86_64-linux" "aarch64-linux"];
@@ -154,11 +153,16 @@
         inherit system;
         specialArgs = inputs;
         modules = [
-          {nixpkgs.overlays = [zig.overlays.default];}
+          {
+            nixpkgs.overlays = [
+              zig.overlays.default
+              inputs.hyprpanel.overlay
+            ];
+          }
           disko.nixosModules.disko
           home-manager.nixosModules.home-manager
           catppuccin.nixosModules.catppuccin
-          stylix.nixosModules.stylix
+
           {
             home-manager = {
               useGlobalPkgs = true;
