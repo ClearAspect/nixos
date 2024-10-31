@@ -44,6 +44,9 @@ in {
         "9,monitor:HDMI-A-1"
         "10,monitor:HDMI-A-1"
       ];
+      exec-once = [
+        "exec-once = waybar" #& swww-daemon & swaync
+      ];
       general = {
         gaps_in = "4";
         gaps_out = "4";

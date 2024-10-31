@@ -300,13 +300,6 @@ in {
     (nerdfonts.override {fonts = ["CascadiaCode" "NerdFontsSymbolsOnly"];})
   ];
 
-  stylix.fonts = {
-    serif = {
-      package = inputs.apple-fonts.packages.${pkgs.system}.sf-pro-nerd;
-      name = "SFProDisplay Nerd Font";
-    };
-  };
-
   environment.systemPackages = with pkgs; [
     ghostty.packages.x86_64-linux.default
     agenix.packages."${pkgs.system}".default # "x86_64-linux"
