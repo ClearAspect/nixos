@@ -45,7 +45,7 @@ in {
         "10,monitor:HDMI-A-1"
       ];
       exec-once = [
-        "exec-once = waybar" #& swww-daemon & swaync
+        "waybar" #& swww-daemon & swaync
       ];
       general = {
         gaps_in = "4";
@@ -259,12 +259,18 @@ in {
 
   # Screen lock
   services = {
+    # hyprpaper = {
+    #   enable = true;
+    # };
   };
 
   programs =
     sharedPrograms
     // {
       waybar = {
+        enable = true;
+      };
+      wofi = {
         enable = true;
       };
     };

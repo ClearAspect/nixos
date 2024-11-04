@@ -4,8 +4,10 @@ with pkgs; let
 in
   shared-packages
   ++ [
+    hyprpanel
     wofi
     kitty
+
     firefox
     vesktop
     rstudio

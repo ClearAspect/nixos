@@ -27,10 +27,10 @@ window-theme = ghostty
 keybind = ctrl+shift+backslash=new_split:right
 keybind = ctrl+shift+minus=new_split:down
 
-#keybind = ctrl+shift+h=goto_split:left
+keybind = ctrl+shift+h=goto_split:left
 #keybind = ctrl+shift+j=goto_split:down
 #keybind = ctrl+shift+k=goto_split:up
-#keybind = ctrl+shift+l=goto_split:right
+keybind = ctrl+shift+l=goto_split:right
 
 keybind = ctrl+one=goto_tab:1
 keybind = ctrl+two=goto_tab:2
