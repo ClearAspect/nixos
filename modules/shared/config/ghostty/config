@@ -1,4 +1,5 @@
-theme = catppuccin-mocha
+#theme = catppuccin-mocha
+theme = nord
 
 font-size = 14
 
