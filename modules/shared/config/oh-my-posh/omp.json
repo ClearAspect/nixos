@@ -4,8 +4,6 @@
   "final_space": true,
   "console_title_template": "{{ .Shell }} in {{ .Folder }}",
   "palette": {
-    "os": "p:text",
-    "closer": "p:text",
     "pink": "#F5C2E7",
     "red": "#F38BA8",
     "mauve": "#CBA6F7",
@@ -87,7 +85,7 @@
         {
           "type": "text",
           "style": "plain",
-          "foreground": "p:closer",
+          "foreground": "p:text",
           "template": " \uf105"
         }
       ]
