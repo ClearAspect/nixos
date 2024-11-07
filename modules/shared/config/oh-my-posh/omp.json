@@ -16,7 +16,24 @@
     "text": "#CDD6F4",
     "surface0": "#313244",
     "mantle": "#181825",
-    "crust": "#11111b"
+    "crust": "#11111b",
+
+    "nord0": "#2e3440",
+    "nord1": "#3b4252",
+    "nord2": "#434c5e",
+    "nord3": "#4c566a",
+    "nord4": "#d8dee9",
+    "nord5": "#e5e9f0",
+    "nord6": "#eceff4",
+    "nord7": "#8fbcbb",
+    "nord8": "#88c0d0",
+    "nord9": "#81a1c1",
+    "nord10": "#5e81ac",
+    "nord11": "#bf616a",
+    "nord12": "#d08770",
+    "nord13": "#ebcb8b",
+    "nord14": "#a3be8c",
+    "nord15": "#b48ead"
   },
   "blocks": [
     {
@@ -29,24 +46,24 @@
           "style": "diamond",
           "leading_diamond": "\ue0b6",
           "trailing_diamond": "",
-          "foreground": "p:crust",
-          "background": "p:blue",
+          "foreground": "p:nord0",
+          "background": "p:nord10",
           "template": "{{.Icon}} "
         },
         {
           "type": "session",
           "style": "powerline",
           "powerline_symbol": "\ue0b4",
-          "foreground": "p:crust",
-          "background": "p:blue",
+          "foreground": "p:nord0",
+          "background": "p:nord10",
           "template": "{{.UserName}} "
         },
         {
           "type": "path",
           "style": "powerline",
           "powerline_symbol": "\ue0b4",
-          "foreground": "p:crust",
-          "background": "p:lavender",
+          "foreground": "p:nord0",
+          "background": "p:nord9",
           "template": " {{ .Path }} ",
           "properties": {
             "folder_icon": "..\ue5fe..",
@@ -58,8 +75,8 @@
           "type": "git",
           "style": "powerline",
           "powerline_symbol": "\ue0b4",
-          "foreground": "p:crust",
-          "background": "p:mauve",
+          "foreground": "p:nord0",
+          "background": "p:nord8",
           "template": " {{ .HEAD }} ",
           "properties": {
             "branch_icon": "\ue725 ",
@@ -78,14 +95,14 @@
           "type": "nix-shell",
           "style": "powerline",
           "powerline_symbol": "\ue0b4",
-          "foreground": "p:blue",
+          "foreground": "p:nord10",
           "background": "transparent",
           "template": " (nix-{{ .Type }})"
         },
         {
           "type": "text",
           "style": "plain",
-          "foreground": "p:text",
+          "foreground": "p:nord4",
           "template": " \uf105"
         }
       ]
@@ -93,7 +110,7 @@
   ],
   "transient_prompt": {
     "background": "transparent",
-    "foreground": "p:text",
+    "foreground": "p:nord4",
     "template": "\uf105 "
   }
 }
