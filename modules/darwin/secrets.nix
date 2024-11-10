@@ -13,6 +13,14 @@ in {
     ];
 
     secrets = {
+      "github-ssh-key" = {
+        symlink = false;
+        path = "/Users/${user}/.ssh/id_github";
+        file = "${secrets}/github-ssh-key-macbook.age";
+        mode = "600";
+        owner = "${user}";
+        group = "wheel";
+      };
     };
   };
 }

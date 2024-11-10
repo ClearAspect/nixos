@@ -14,6 +14,7 @@ in {
   imports = [
     ../../modules/nixos/disk-config.nix
     ../../modules/shared
+    ../../modules/nixos/secrets.nix
     agenix.nixosModules.default
   ];
 
@@ -115,7 +116,7 @@ in {
     modesetting.enable = true;
     powerManagement.enable = false;
     powerManagement.finegrained = false;
-    # forceFullCompositionPipeline = true;
+    forceFullCompositionPipeline = true;
     open = false;
     nvidiaSettings = true;
     package = config.boot.kernelPackages.nvidiaPackages.beta;

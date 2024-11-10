@@ -9,6 +9,7 @@ in {
   imports = [
     ../../modules/shared
     ../../modules/darwin/dock/default.nix
+    ../../modules/darwin/secrets.nix
     agenix.darwinModules.default
   ];
 
