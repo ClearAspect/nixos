@@ -143,6 +143,12 @@ in {
       	Port 22
       	ForwardAgent yes
 
+      Host Roans-MacBook-Pro
+      	HostName 192.168.10.223
+      	user roanm
+      	ForwardAgent yes
+
+
       VisualHostKey=yes
     '';
   };

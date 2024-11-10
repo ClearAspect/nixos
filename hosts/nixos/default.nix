@@ -115,7 +115,7 @@ in {
     modesetting.enable = true;
     powerManagement.enable = false;
     powerManagement.finegrained = false;
-    # forceFullCompositionPipeline = true;
+    forceFullCompositionPipeline = true;
     open = false;
     nvidiaSettings = true;
     package = config.boot.kernelPackages.nvidiaPackages.beta;
