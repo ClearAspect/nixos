@@ -3,6 +3,7 @@
   xdg_configHome = "${home}/.config";
   xdg_dataHome = "${home}/.local/share";
   xdg_stateHome = "${home}/.local/state";
+  Nixos = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEoqzYQIWzZ1vaJNCDEX4QJAbUyw/cQjfaehXsdNjGeM roanmason@live.ca";
 in {
   # "${xdg_configHome}/rofi/colors.rasi".text = builtins.readFile ./config/rofi/colors.rasi;
   # "${xdg_configHome}/rofi/confirm.rasi".text = builtins.readFile ./config/rofi/confirm.rasi;
@@ -14,4 +15,8 @@ in {
 
   ".config/waybar".source = ./config/waybar;
   ".config/wlogout".source = ./config/wlogout;
+
+  ".ssh/id_ed25519.pub" = {
+    text = Nixos;
+  };
 }

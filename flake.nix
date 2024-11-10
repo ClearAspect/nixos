@@ -33,6 +33,8 @@
       flake = false;
     };
 
+    hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
+
     # Best Terminal Emulator
     ghostty.url = "git+ssh://git@github.com/ghostty-org/ghostty";
 
@@ -58,6 +60,7 @@
     ghostty,
     zig,
     catppuccin,
+    hyprpanel,
   } @ inputs: let
     user = "roanm";
     linuxSystems = ["x86_64-linux" "aarch64-linux"];
@@ -113,6 +116,7 @@
           specialArgs = inputs;
           modules = [
             {nixpkgs.overlays = [zig.overlays.default];}
+            agenix.darwinModules.default
             home-manager.darwinModules.home-manager
             nix-homebrew.darwinModules.nix-homebrew
             {
@@ -149,7 +153,13 @@
         inherit system;
         specialArgs = inputs;
         modules = [
-          {nixpkgs.overlays = [zig.overlays.default];}
+          {
+            nixpkgs.overlays = [
+              zig.overlays.default
+              inputs.hyprpanel.overlay
+            ];
+          }
+          agenix.darwinModules.default
           disko.nixosModules.disko
           home-manager.nixosModules.home-manager
           catppuccin.nixosModules.catppuccin

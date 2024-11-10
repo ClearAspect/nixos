@@ -14,7 +14,7 @@ in {
   imports = [
     ../../modules/nixos/disk-config.nix
     ../../modules/shared
-    agenix.nixosModules.default
+    ../../modules/nixos/secrets.nix
   ];
 
   # Use the systemd-boot EFI boot loader.
@@ -115,7 +115,7 @@ in {
     modesetting.enable = true;
     powerManagement.enable = false;
     powerManagement.finegrained = false;
-    # forceFullCompositionPipeline = true;
+    forceFullCompositionPipeline = true;
     open = false;
     nvidiaSettings = true;
     package = config.boot.kernelPackages.nvidiaPackages.beta;
@@ -302,7 +302,7 @@ in {
 
   environment.systemPackages = with pkgs; [
     ghostty.packages.x86_64-linux.default
-    agenix.packages."${pkgs.system}".default # "x86_64-linux"
+    agenix.packages."${pkgs.system}".default
     lshw
     vim
     coreutils

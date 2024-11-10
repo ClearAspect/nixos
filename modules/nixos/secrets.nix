@@ -3,9 +3,10 @@
   pkgs,
   agenix,
   secrets,
+  user,
   ...
 }: let
-  user = "dustin";
+  user = "roanm";
 in {
   age = {
     identityPaths = [
@@ -15,8 +16,8 @@ in {
     secrets = {
       "github-ssh-key" = {
         symlink = false;
-        path = "/home/${user}/.ssh/id_github";
-        file = "${secrets}/github-ssh-key.age";
+        path = "/home/${user}/.ssh/id_ed25519";
+        file = "${secrets}/github-ssh-key-nixos.age";
         mode = "600";
         owner = "${user}";
         group = "wheel";
