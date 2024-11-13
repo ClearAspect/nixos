@@ -145,7 +145,7 @@ in {
     {path = "/System/Applications/System Settings.app/";}
     {path = "/Applications/Firefox.app/";}
     {path = "/Applications/Discord.app/";}
-    {path = "/Applications/Kitty.app/";}
+    # {path = "/Applications/Kitty.app/";}
     {path = "/Applications/Ghostty.app/";}
   ];
 }
