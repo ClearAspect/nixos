@@ -3,9 +3,10 @@
   pkgs,
   agenix,
   secrets,
+  user,
   ...
 }: let
-  user = "dustin";
+  user = "roanm";
 in {
   age = {
     identityPaths = [

@@ -116,6 +116,7 @@
           specialArgs = inputs;
           modules = [
             {nixpkgs.overlays = [zig.overlays.default];}
+            agenix.darwinModules.default
             home-manager.darwinModules.home-manager
             nix-homebrew.darwinModules.nix-homebrew
             {
@@ -155,10 +156,10 @@
           {
             nixpkgs.overlays = [
               zig.overlays.default
-
               inputs.hyprpanel.overlay
             ];
           }
+          agenix.darwinModules.default
           disko.nixosModules.disko
           home-manager.nixosModules.home-manager
           catppuccin.nixosModules.catppuccin

@@ -7,7 +7,7 @@ in
     steam
     hyprpanel
     wofi
-    kitty
+    # kitty
 
     firefox
     vesktop

@@ -7,9 +7,9 @@
   user = "roanm";
 in {
   imports = [
+    ../../modules/darwin/secrets.nix
     ../../modules/shared
     ../../modules/darwin/dock/default.nix
-    agenix.darwinModules.default
   ];
 
   # Users / Me
@@ -88,10 +88,9 @@ in {
   system.checks.verifyNixPath = false;
   security.pam.enableSudoTouchIdAuth = true;
 
-  environment.systemPackages = with pkgs;
-    [
-    ]
-    ++ (import ../../modules/shared/packages.nix {inherit pkgs;});
+  environment.systemPackages = with pkgs; [
+    agenix.packages."${pkgs.system}".default
+  ];
 
   system = {
     stateVersion = 4;
@@ -146,7 +145,7 @@ in {
     {path = "/System/Applications/System Settings.app/";}
     {path = "/Applications/Firefox.app/";}
     {path = "/Applications/Discord.app/";}
-    {path = "/Applications/Kitty.app/";}
+    # {path = "/Applications/Kitty.app/";}
     {path = "/Applications/Ghostty.app/";}
   ];
 }

@@ -1,6 +1,6 @@
 {pkgs}:
 with pkgs; [
-  kitty
+  # kitty
 
   # General packages for development and system management
   btop
