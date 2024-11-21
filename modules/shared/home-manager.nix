@@ -12,7 +12,7 @@ in {
 
   fish = {
     enable = true;
-    catppuccin.enable = true;
+    # catppuccin.enable = true;
     shellAliases = {
       cd = "z ";
       ls = "lsd --color=auto";
@@ -93,7 +93,7 @@ in {
 
   bat = {
     enable = true;
-    catppuccin.enable = true;
+    # catppuccin.enable = true;
   };
 
   git = {

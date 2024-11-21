@@ -21,6 +21,7 @@ with pkgs; [
 
   # Fonts
   cozette
+  commit-mono
 
   # llvm
   # llvm_18
