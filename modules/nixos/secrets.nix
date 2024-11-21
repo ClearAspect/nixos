@@ -16,7 +16,7 @@ in {
     secrets = {
       "github-ssh-key" = {
         symlink = false;
-        path = "/home/${user}/.ssh/id_ed25519";
+        path = "/home/${user}/.ssh/id_github";
         file = "${secrets}/github-ssh-key-nixos.age";
         mode = "600";
         owner = "${user}";

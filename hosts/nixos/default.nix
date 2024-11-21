@@ -306,6 +306,7 @@ in {
     vim
     coreutils
     pciutils
+    alsa-utils
   ];
 
   system.stateVersion = "21.05"; # Don't change this

@@ -56,8 +56,8 @@ in {
 
         # https://wiki.hyprland.org/Configuring/Variables/#variable-types for info about colors
         # "col.active_border" = "$blue $blue 45deg";
-        "col.active_border" = "#d8dee9";
-        "col.inactive_border" = "#2e3440";
+        "col.active_border" = "rgb(d8dee9)";
+        "col.inactive_border" = "rgb(2e3440)";
 
         # Set Uto true enable resizing windows by clicking and dragging on borders and gaps
         resize_on_border = "false";
