@@ -13,11 +13,23 @@ font-variation-bold = wght=700
 font-variation-italic = wght=450
 font-variation-bold-italic = wght=700
 
-font-feature = zero
-font-feature = calt
-font-feature = liga
-font-feature = ss11 
+# font-feature = zero
+# font-feature = calt
+# font-feature = liga
+# font-feature = ss11 
+# font-feature = ss02
+
+
+font-family = CommitMono
+
+font-variation = wght=700
+
+font-feature = ss01
 font-feature = ss02
+font-feature = ss03
+font-feature = ss04
+font-feature = ss05
+
 
 
 gtk-titlebar = false
