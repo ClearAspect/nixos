@@ -8,9 +8,9 @@ font-family = MonoLisa
 # font-style-bold = Bold
 # font-style-italic = Medium Italic
 # font-style-bold-italic = Bold Italic
-font-variation = wght=500
+font-variation = wght=450
 font-variation-bold = wght=700
-font-variation-italic = wght=500
+font-variation-italic = wght=450
 font-variation-bold-italic = wght=700
 
 font-feature = zero
@@ -23,7 +23,7 @@ font-feature = ss02
 gtk-titlebar = false
 window-theme = ghostty
 
-background-opacity = 0.66
+background-opacity = 0.50
 background-blur-radius = 20
 
 # custom-shader = ./crt.glsl
