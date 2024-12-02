@@ -29,14 +29,14 @@ in {
         device = "nodev";
         efiSupport = true;
         useOSProber = true;
-        configurationLimit = 4;
+        configurationLimit = 8;
 
         catppuccin.enable = true;
       };
       efi.canTouchEfiVariables = true;
       timeout = 30;
     };
-    plymouth.enable = true;
+    plymouth.enable = false;
     initrd.availableKernelModules = [
       "xhci_pci"
       "ahci"
@@ -54,16 +54,6 @@ in {
 
     kernelPackages = pkgs.linuxPackages_latest;
     extraModulePackages = [config.boot.kernelPackages.nvidia_x11_beta];
-    # kernelPatches = [
-    #   {
-    #     name = "crashdump-config";
-    #     patch = null;
-    #     extraConfig = ''
-    #       DRM_SIMPLEDRM n
-    #       FB_SIMPLE n
-    #     '';
-    #   }
-    # ];
 
     kernelModules = ["uinput"];
     kernelParams = [
