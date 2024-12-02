@@ -27,4 +27,10 @@ in
 
     xdg-desktop-portal-hyprland
     wl-clipboard
+
+    # Tools
+    ntfs3g
+
+    xcalib
+    colord
   ]
