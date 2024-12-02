@@ -4,31 +4,18 @@ theme = nord
 font-size = 14
 
 font-family = MonoLisa
-# font-style = Medium
-# font-style-bold = Bold
-# font-style-italic = Medium Italic
-# font-style-bold-italic = Bold Italic
-font-variation = wght=450
-font-variation-bold = wght=700
-font-variation-italic = wght=450
-font-variation-bold-italic = wght=700
+font-style = Medium
+font-style-bold = Bold
+font-style-italic = Medium Italic
+font-style-bold-italic = Bold Italic
 
-# font-feature = zero
-# font-feature = calt
-# font-feature = liga
-# font-feature = ss11 
-# font-feature = ss02
-
-
-font-family = CommitMono
-
-font-variation = wght=700
-
-font-feature = ss01
+font-feature = zero
+font-feature = calt
+font-feature = liga
+font-feature = ss11 
 font-feature = ss02
-font-feature = ss03
-font-feature = ss04
-font-feature = ss05
+
+
 
 
 
@@ -37,6 +24,8 @@ window-theme = ghostty
 
 background-opacity = 0.50
 background-blur-radius = 20
+#background-opacity = 0.75
+#background-blur-radius = 80
 
 # custom-shader = ./crt.glsl
 # custom-shader = ./bloom.glsl
