@@ -1,7 +1,38 @@
-#theme = catppuccin-mocha
-theme = nord
+# --------------------------------------------------
+# PALLETE
+# --------------------------------------------------
 
-font-size = 14
+#theme = catppuccin-mocha
+#theme = nord
+theme = onehalfdark
+
+# palette = 0=#171922
+# palette = 1=#D0679D
+# palette = 2=#5DE4C7
+# palette = 3=#FFFAC2
+# palette = 4=#89DDFF
+# palette = 5=#FCC5E9
+# palette = 6=#89DDFF
+# palette = 7=#FFFFFF
+# palette = 8=#506477
+# palette = 9=#D0679D
+# palette = 10=#5DE4C7
+# palette = 11=#FFFAC2
+# palette = 12=#ADD7FF
+# palette = 13=#FCC5E9
+# palette = 14=#ADD7FF
+# palette = 15=#FFFFFF
+# background = 1B1E28
+# foreground = E4F0FB
+# cursor-color = 7390AA
+# selection-background = 506477
+# selection-foreground = E4F0FB
+
+# --------------------------------------------------
+# FONT 
+# --------------------------------------------------
+
+font-size = 12
 
 font-family = MonoLisa
 font-style = Medium
@@ -16,19 +47,23 @@ font-feature = ss11
 font-feature = ss02
 
 
-
-
+# --------------------------------------------------
+# WINDOW 
+# --------------------------------------------------
 
 gtk-titlebar = false
 window-theme = ghostty
 
-background-opacity = 0.50
-background-blur-radius = 20
-#background-opacity = 0.75
-#background-blur-radius = 80
+#background-opacity = 0.60
+#background-blur-radius = 20
 
 # custom-shader = ./crt.glsl
 # custom-shader = ./bloom.glsl
+
+
+# --------------------------------------------------
+# KEYBINDS
+# --------------------------------------------------
 
 keybind = ctrl+shift+backslash=new_split:right
 keybind = ctrl+shift+minus=new_split:down
