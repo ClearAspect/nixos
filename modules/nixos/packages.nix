@@ -31,6 +31,6 @@ in
     # Tools
     ntfs3g
 
-    xcalib
     colord
+    xiccd
   ]

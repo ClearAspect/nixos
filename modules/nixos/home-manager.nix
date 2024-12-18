@@ -46,6 +46,7 @@ in {
       exec-once = [
         # "waybar" #& swww-daemon & swaync
         "hyprpanel"
+        "hyprpaper"
       ];
       general = {
         gaps_in = "4";
@@ -260,9 +261,21 @@ in {
 
   # Screen lock
   services = {
-    # hyprpaper = {
-    #   enable = true;
-    # };
+    hyprpaper = {
+      enable = true;
+      settings = {
+        ipc = "on";
+        splash = false;
+        splash_offset = 2.0;
+
+        preload = ["~/Pictures/blue_distortion_1.png"];
+
+        wallpaper = [
+          "DP-1,~/Pictures/blue_distortion_1.png"
+          "HDMI-A-1,~/Pictures/blue_distortion_1.png"
+        ];
+      };
+    };
   };
 
   programs =

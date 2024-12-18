@@ -69,37 +69,35 @@ in {
     enable = true;
     enable32Bit = true;
   };
-  services = {
-    xserver = {
-      enable = true;
+  services.xserver = {
+    enable = true;
 
-      videoDrivers = ["nvidia"];
+    videoDrivers = ["nvidia"];
 
-      # Uncomment for Nvidia GPU
-      # This helps fix tearing of windows for Nvidia cards
-      # screenSection = ''
-      #   Option       "metamodes" "nvidia-auto-select +0+0 {ForceFullCompositionPipeline=On}"
-      #   Option       "AllowIndirectGLXProtocol" "off"
-      #   Option       "TripleBuffer" "on"
-      # '';
+    # Uncomment for Nvidia GPU
+    # This helps fix tearing of windows for Nvidia cards
+    # screenSection = ''
+    #   Option       "metamodes" "nvidia-auto-select +0+0 {ForceFullCompositionPipeline=On}"
+    #   Option       "AllowIndirectGLXProtocol" "off"
+    #   Option       "TripleBuffer" "on"
+    # '';
 
-      # Turn Caps Lock into Ctrl
-      xkb.layout = "us";
-      # xkbOptions = "ctrl:nocaps";
+    # Turn Caps Lock into Ctrl
+    xkb.layout = "us";
+    # xkbOptions = "ctrl:nocaps";
 
-      xrandrHeads = [
-        {
-          output = "DP-1";
-          primary = true;
-          monitorConfig = ''Option "Enable" "true"'';
-        }
-        {
-          output = "HDMI-A-1";
-          primary = false;
-          monitorConfig = ''Option "Enable" "false"'';
-        }
-      ];
-    };
+    xrandrHeads = [
+      {
+        output = "DP-1";
+        primary = true;
+        monitorConfig = ''Option "Enable" "true"'';
+      }
+      {
+        output = "HDMI-A-1";
+        primary = false;
+        monitorConfig = ''Option "Enable" "false"'';
+      }
+    ];
   };
   hardware.nvidia = {
     modesetting.enable = true;
@@ -194,6 +192,8 @@ in {
   services = {
     # Better support for general peripherals
     libinput.enable = true;
+
+    colord.enable = true;
 
     displayManager.sddm = {
       enable = true;
