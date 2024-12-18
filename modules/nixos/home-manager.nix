@@ -28,7 +28,7 @@ in {
 
     settings = {
       monitor = [
-        "DP-1,3840x2160@120, 0x0, 1.5, bitdepth, 10"
+        "DP-1,3840x2160@144, 0x0, 1.5, bitdepth, 10"
         "HDMI-A-1,3840x2160@60, -2560x0, 1.5"
       ];
       workspace = [

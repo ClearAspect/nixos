@@ -38,6 +38,7 @@ in {
 
     sessionVariables = {
       EDITOR = "nvim";
+      JAVA_HOME = "${pkgs.openjdk}/lib/openjdk";
     };
     sessionPath = [
       "${config.home.homeDirectory}/.cargo/bin"

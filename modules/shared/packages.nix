@@ -30,7 +30,7 @@ with pkgs; [
   python3
   cargo
   cmake
-  jdk
+  openjdk #java
   maven
   zigpkgs.master
 
@@ -49,6 +49,7 @@ with pkgs; [
   fzf
   killall
   ripgrep
+  fd
   tree
   tree-sitter
   tmux
