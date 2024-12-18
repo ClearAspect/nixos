@@ -11,6 +11,7 @@ in
 
     firefox
     vesktop
+    discord-canary
     rstudio
     eclipses.eclipse-java
 
