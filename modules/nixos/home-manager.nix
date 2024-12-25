@@ -56,8 +56,8 @@ in {
 
         # https://wiki.hyprland.org/Configuring/Variables/#variable-types for info about colors
         # "col.active_border" = "$blue $blue 45deg";
-        "col.active_border" = "rgb(d8dee9)";
-        "col.inactive_border" = "rgb(2e3440)";
+        "col.active_border" = "rgb(76787c)";
+        "col.inactive_border" = "rgb(76787c)";
 
         # Set Uto true enable resizing windows by clicking and dragging on borders and gaps
         resize_on_border = "false";
@@ -75,7 +75,7 @@ in {
         active_opacity = "1.0";
         inactive_opacity = "1.0";
 
-        drop_shadow = "true";
+        drop_shadow = "false";
         shadow_range = "4";
         shadow_render_power = "3";
         "col.shadow" = "rgb(dcdfe4)";
