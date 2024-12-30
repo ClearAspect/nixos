@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  agenix,
   ...
 }: let
   user = "roanm";
@@ -16,13 +17,16 @@ in {
     packages = pkgs.callPackage ./packages.nix {};
     file = sharedFiles // import ./files.nix {inherit user config pkgs;};
     stateVersion = "21.05";
+
+    sessionVariables = {
+      EDITOR = "nvim";
+    };
   };
 
   wayland.windowManager.hyprland = {
     enable = true;
     package = pkgs.hyprland;
     xwayland.enable = true;
-    catppuccin.enable = true;
 
     systemd.enable = true;
 

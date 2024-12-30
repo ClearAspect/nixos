@@ -94,6 +94,9 @@ in {
   bat = {
     enable = true;
     # catppuccin.enable = true;
+    config = {
+      theme = "OneHalfDark";
+    };
   };
 
   git = {
@@ -128,7 +131,7 @@ in {
     ];
     extraConfig = ''
       Host localhomeserver
-      	HostName 192.168.10.224
+      	HostName 192.168.10.208
       	User super
       	Port 22
 

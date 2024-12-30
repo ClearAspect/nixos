@@ -9,6 +9,7 @@ with pkgs; [
   lazygit
   lsd
   neovim
+  helix
   openssh
   oh-my-posh
   killall
@@ -23,15 +24,30 @@ with pkgs; [
   cozette
   commit-mono
 
+  # Languages and Support
+  # C
   # llvm
   # llvm_18
   # gcc
-  lua
-  python3
-  cargo
+  clang-tools
   cmake
-  openjdk #java
+
+  # Java
+  openjdk
   maven
+  jdt-language-server
+
+  # Python
+  python3
+  ruff
+
+  # Nix
+  nixd
+  alejandra
+
+  # Other
+  lua
+  cargo
   zigpkgs.master
 
   # Media-related packages
@@ -57,7 +73,4 @@ with pkgs; [
   unzip
   wget
   zip
-
-  # Formatter
-  alejandra
 ]

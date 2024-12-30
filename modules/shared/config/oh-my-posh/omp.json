@@ -87,7 +87,7 @@
           "powerline_symbol": "\ue0b4",
           "foreground": "p:blueDark",
           "background": "transparent",
-          "template": " (nix-{{ .Type }})"
+          "template": "  (nix-{{ .Type }})"
         },
         {
           "type": "text",

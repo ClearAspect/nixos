@@ -144,8 +144,6 @@ in {
 
   # Manages keys and such
   programs = {
-    gnupg.agent.enable = true;
-
     # Needed for anything GTK related
     dconf.enable = true;
 
@@ -187,6 +185,9 @@ in {
     NIKPKGS_ALLOW_UNFREE = "1";
 
     EDITOR = "nvim";
+
+    # ANTHROPIC_API_KEY = ''$(${pkgs.coreutils}/bin/cat ${config.age.secrets."api-Claude".path})'';
+    # OPENAI_API_KEY = ''$(${pkgs.coreutils}/bin/cat ${config.age.secrets."api-OpenAI".path})'';
   };
 
   services = {
@@ -283,6 +284,33 @@ in {
       }
     ];
   };
+
+  # Yubico YubiKey Security Key
+  # programs.gnupg.agent = {
+  #   enable = true;
+  #   enableSSHSupport = true;
+  # };
+  # security.pam = {
+  #   enableSudoTouchIdAuth = true;
+  #   yubico.enable = true;
+  #   u2f = {
+  #     enable = true;
+  #     interactive = true;
+  #     cue = true;
+  #     origin = "pam://yubi";
+  #     authFile = pkgs.writeText "u2f-mappings" (lib.concatStrings [
+  #       "${user}"
+  #       ":<KeyHandle1>,<UserKey1>,<CoseType1>,<Options1>"
+  #       ":<KeyHandle2>,<UserKey2>,<CoseType2>,<Options2>"
+  #     ]);
+  #   };
+  #   services = {
+  #     login.u2fAuth = true;
+  #     sudo.u2fAuth = true;
+  #   };
+  # };
+  # services.pcscd.enable = true;
+  # services.udev.packages = [pkgs.yubikey-personalization];
 
   fonts.packages = with pkgs; [
     font-awesome
