@@ -17,4 +17,5 @@ _: [
   "homebrew/cask/docker"
   "rstudio"
   "r"
+  "mysqlworkbench"
 ]

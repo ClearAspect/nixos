@@ -125,7 +125,6 @@
                 users.${user} = {
                   imports = [
                     ./modules/darwin/home-manager.nix
-                    catppuccin.homeManagerModules.catppuccin
                   ];
                 };
               };

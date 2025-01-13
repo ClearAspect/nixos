@@ -11,12 +11,21 @@ in {
     "/Users/${user}/.ssh/id_ed25519"
   ];
 
-  # age.secrets."github-ssh-key-macbook" = {
-  #   symlink = true;
-  #   path = "/Users/${user}/.ssh/id_github";
-  #   file = "${secrets}/github-ssh-key-macbook.age";
-  #   mode = "600";
-  #   owner = "${user}";
-  #   group = "wheel";
-  # };
+  age.secrets."api-Claude" = {
+    symlink = true;
+    # path = "/run/agenix/api-Claude";
+    file = "${secrets}/api-Claude.age";
+    # mode = "600";
+    # owner = "${user}";
+    # group = "wheel";
+  };
+
+  age.secrets."api-OpenAI" = {
+    symlink = true;
+    # path = "/run/agenix/api-OpenAI";
+    file = "${secrets}/api-OpenAI.age";
+    # mode = "600";
+    # owner = "${user}";
+    # group = "wheel";
+  };
 }

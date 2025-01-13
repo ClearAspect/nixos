@@ -42,6 +42,7 @@ in {
   homebrew = {
     enable = true;
     casks = pkgs.callPackage ../../modules/darwin/casks.nix {};
+    brews = ["mysql"];
     # onActivation.cleanup = "uninstall";
 
     # These app IDs are from using the mas CLI app
@@ -99,6 +100,9 @@ in {
     # Hack: https://github.com/ghostty-org/ghostty/discussions/2832
     # GHOSTTY_SHELL_INTEGRATION_XDG_DIR = "/Applications/Ghostty.app/Contents/Resources/shell-integration";
     XDG_DATA_DIRS = ["$GHOSTTY_SHELL_INTEGRATION_XDG_DIR"];
+
+    ANTHROPIC_API_KEY = ''$(${pkgs.coreutils}/bin/cat ${config.age.secrets."api-Claude".path})'';
+    OPENAI_API_KEY = ''$(${pkgs.coreutils}/bin/cat ${config.age.secrets."api-OpenAI".path})'';
   };
 
   environment.systemPackages = with pkgs; [

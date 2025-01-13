@@ -3,25 +3,29 @@
   pkgs,
   agenix,
   secrets,
-  user,
   ...
 }: let
   user = "roanm";
 in {
-  age = {
-    identityPaths = [
-      "/home/${user}/.ssh/id_ed25519"
-    ];
+  age.identityPaths = [
+    "/home/${user}/.ssh/id_ed25519"
+  ];
 
-    # secrets = {
-    #   "github-ssh-key" = {
-    #     symlink = false;
-    #     path = "/home/${user}/.ssh/id_github";
-    #     file = "${secrets}/github-ssh-key-nixos.age";
-    #     mode = "600";
-    #     owner = "${user}";
-    #     group = "wheel";
-    #   };
-    # };
+  age.secrets."api-Claude" = {
+    symlink = true;
+    # path = "/home/${user}/.ssh/id_github";
+    file = "${secrets}/api-Claude.age";
+    # mode = "600";
+    # owner = "${user}";
+    # group = "wheel";
+  };
+
+  age.secrets."api-OpenAI" = {
+    symlink = true;
+    # path = "/home/${user}/.ssh/id_github";
+    file = "${secrets}/api-OpenAI.age";
+    # mode = "600";
+    # owner = "${user}";
+    # group = "wheel";
   };
 }

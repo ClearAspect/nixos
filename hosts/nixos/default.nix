@@ -185,6 +185,9 @@ in {
     NIKPKGS_ALLOW_UNFREE = "1";
 
     EDITOR = "nvim";
+
+    ANTHROPIC_API_KEY = ''$(${pkgs.coreutils}/bin/cat ${config.age.secrets."api-Claude".path})'';
+    OPENAI_API_KEY = ''$(${pkgs.coreutils}/bin/cat ${config.age.secrets."api-OpenAI".path})'';
   };
 
   services = {
