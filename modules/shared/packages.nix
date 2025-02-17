@@ -22,14 +22,16 @@ with pkgs; [
   # Fonts
   cozette
   commit-mono
+  nerd-fonts.symbols-only
 
-  # llvm
-  # llvm_18
-  # gcc
+  # C Language
+  libgcc
+  cmake
+  gnumake
+
   lua
   python3
   cargo
-  cmake
   openjdk #java
   maven
   zigpkgs.master

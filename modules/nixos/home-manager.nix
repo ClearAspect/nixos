@@ -32,8 +32,9 @@ in {
 
     settings = {
       monitor = [
+        "HDMI-A-1,1920x1080@60, -1080x0, 1, transform, 1"
         "DP-1,3840x2160@144, 0x0, 1.5, bitdepth, 10"
-        "HDMI-A-1,3840x2160@60, -2560x0, 1.5"
+        "DP-2,3840x2160@60, 2560x0, 1.5"
       ];
       workspace = [
         "1,monitor:DP-1, default:true"
@@ -41,11 +42,11 @@ in {
         "3,monitor:DP-1"
         "4,monitor:DP-1"
         "5,monitor:DP-1"
-        "6,monitor:HDMI-A-1, default:true"
-        "7,monitor:HDMI-A-1"
-        "8,monitor:HDMI-A-1"
-        "9,monitor:HDMI-A-1"
-        "10,monitor:HDMI-A-1"
+        "6,monitor:DP-2, default:true"
+        "7,monitor:DP-2"
+        "8,monitor:DP-2"
+        "9,monitor:DP-2"
+        "10,monitor:DP-2"
       ];
       exec-once = [
         # "waybar" #& swww-daemon & swaync
@@ -79,10 +80,12 @@ in {
         active_opacity = "1.0";
         inactive_opacity = "1.0";
 
-        drop_shadow = "false";
-        shadow_range = "4";
-        shadow_render_power = "3";
-        "col.shadow" = "rgb(dcdfe4)";
+        shadow = {
+          enabled = "false";
+          range = "4";
+          render_power = "3";
+          color = "rgb(76787c)";
+        };
 
         # https://wiki.hyprland.org/Configuring/Variables/#blur
         blur = {
@@ -276,6 +279,7 @@ in {
 
         wallpaper = [
           "DP-1,~/Pictures/blue_distortion_1.png"
+          "DP-2,~/Pictures/blue_distortion_1.png"
           "HDMI-A-1,~/Pictures/blue_distortion_1.png"
         ];
       };

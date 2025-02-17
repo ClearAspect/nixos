@@ -30,8 +30,6 @@ in {
         efiSupport = true;
         useOSProber = true;
         configurationLimit = 8;
-
-        catppuccin.enable = true;
       };
       efi.canTouchEfiVariables = true;
       timeout = 30;
@@ -88,17 +86,35 @@ in {
 
     xrandrHeads = [
       {
-        output = "DP-1";
-        primary = true;
-        monitorConfig = ''Option "Enable" "true"'';
-      }
-      {
         output = "HDMI-A-1";
         primary = false;
-        monitorConfig = ''Option "Enable" "false"'';
+        monitorConfig = ''
+          Option "LeftOf" "DP-1"
+          Option "Rotate" "Right"
+          Option "PreferredMode" "1920x1080"
+          Option "Enabled" "false"
+        '';
+      }
+      {
+        output = "DP-1";
+        primary = true;
+        monitorConfig = ''
+          Option "RightOf" "HDMI-A-1"
+          Option "LeftOf" "DP-2"
+          Option "PreferredMode" "3160x2160"
+        '';
+      }
+      {
+        output = "DP-1";
+        primary = false;
+        monitorConfig = ''
+          Option "RightOf" "DP-1"
+          Option "PreferredMode" "3160x2160"
+        '';
       }
     ];
   };
+
   hardware.nvidia = {
     modesetting.enable = true;
     powerManagement.enable = false;
@@ -186,8 +202,8 @@ in {
 
     EDITOR = "nvim";
 
-    ANTHROPIC_API_KEY = ''$(${pkgs.coreutils}/bin/cat ${config.age.secrets."api-Claude".path})'';
-    OPENAI_API_KEY = ''$(${pkgs.coreutils}/bin/cat ${config.age.secrets."api-OpenAI".path})'';
+    # ANTHROPIC_API_KEY = ''$(${pkgs.coreutils}/bin/cat ${config.age.secrets."api-Claude".path})'';
+    # OPENAI_API_KEY = ''$(${pkgs.coreutils}/bin/cat ${config.age.secrets."api-OpenAI".path})'';
   };
 
   services = {
@@ -199,7 +215,6 @@ in {
     displayManager.sddm = {
       enable = true;
       wayland.enable = true;
-      catppuccin.enable = true;
       package = pkgs.kdePackages.sddm;
     };
 
@@ -207,6 +222,8 @@ in {
       enable = true;
     };
 
+    # Audio
+    pulseaudio.enable = false;
     pipewire = {
       enable = true;
       alsa.enable = true;
@@ -241,11 +258,6 @@ in {
 
     gvfs.enable = true; # Mount, trash, and other functionalities
     tumbler.enable = true; # Thumbnail support for images
-  };
-
-  # Audio support
-  hardware = {
-    pulseaudio.enable = false;
   };
 
   # Users / Me
@@ -286,36 +298,35 @@ in {
   };
 
   # Yubico YubiKey Security Key
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
-  };
-  security.pam = {
-    enableSudoTouchIdAuth = true;
-    yubico.enable = true;
-    u2f = {
-      enable = true;
-      interactive = true;
-      cue = true;
-      origin = "pam://yubi";
-      authFile = pkgs.writeText "u2f-mappings" (lib.concatStrings [
-        "${user}"
-        ":<KeyHandle1>,<UserKey1>,<CoseType1>,<Options1>"
-        ":<KeyHandle2>,<UserKey2>,<CoseType2>,<Options2>"
-      ]);
-    };
-    services = {
-      login.u2fAuth = true;
-      sudo.u2fAuth = true;
-    };
-  };
-  services.pcscd.enable = true;
-  services.udev.packages = [pkgs.yubikey-personalization];
+  # programs.gnupg.agent = {
+  #   enable = true;
+  #   enableSSHSupport = true;
+  # };
+  # security.pam = {
+  # yubico.enable = true;
+  # u2f = {
+  #   enable = true;
+  #   interactive = true;
+  #   cue = true;
+  #   origin = "pam://yubi";
+  #   authFile = pkgs.writeText "u2f-mappings" (lib.concatStrings [
+  #     "${user}"
+  #     ":<KeyHandle1>,<UserKey1>,<CoseType1>,<Options1>"
+  #     ":<KeyHandle2>,<UserKey2>,<CoseType2>,<Options2>"
+  #   ]);
+  # };
+  # services = {
+  #   login.u2fAuth = true;
+  #   sudo.u2fAuth = true;
+  # };
+  # };
+  # services.pcscd.enable = true;
+  # services.udev.packages = [pkgs.yubikey-personalization];
 
-  fonts.packages = with pkgs; [
-    font-awesome
-    (nerdfonts.override {fonts = ["CascadiaCode" "NerdFontsSymbolsOnly"];})
-  ];
+  catppuccin = {
+    sddm.enable = true;
+    grub.enable = true;
+  };
 
   environment.systemPackages = with pkgs; [
     ghostty.packages.x86_64-linux.default

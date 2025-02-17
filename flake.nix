@@ -36,7 +36,8 @@
     hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
 
     # Best Terminal Emulator
-    ghostty.url = "git+ssh://git@github.com/ghostty-org/ghostty";
+    # ghostty.url = "git+ssh://git@github.com/ghostty-org/ghostty";
+    ghostty.url = "github:ghostty-org/ghostty";
 
     # Best Colour Scheme
     catppuccin.url = "github:catppuccin/nix";
