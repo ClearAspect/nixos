@@ -90,11 +90,20 @@ in {
   system.checks.verifyNixPath = false;
 
   # Yubico YubiKey Security Key
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
+  # programs.gnupg.agent = {
+  #   enable = true;
+  #   enableSSHSupport = true;
+  # };
+  # security.pam.enableSudoTouchIdAuth = true;
+
+  environment.variables = {
+    # Hack: https://github.com/ghostty-org/ghostty/discussions/2832
+    # GHOSTTY_SHELL_INTEGRATION_XDG_DIR = "/Applications/Ghostty.app/Contents/Resources/shell-integration";
+    XDG_DATA_DIRS = ["$GHOSTTY_SHELL_INTEGRATION_XDG_DIR"];
+
+    # ANTHROPIC_API_KEY = ''$(${pkgs.coreutils}/bin/cat ${config.age.secrets."api-Claude".path})'';
+    # OPENAI_API_KEY = ''$(${pkgs.coreutils}/bin/cat ${config.age.secrets."api-OpenAI".path})'';
   };
-  security.pam.enableSudoTouchIdAuth = true;
 
   environment.variables = {
     # Hack: https://github.com/ghostty-org/ghostty/discussions/2832
