@@ -61,9 +61,8 @@ in {
     # };
   };
 
-  services.nix-daemon.enable = true;
-
   nix = {
+    enable = true;
     package = pkgs.nix;
     settings = {
       trusted-users = ["@admin" "${user}"];
@@ -72,7 +71,6 @@ in {
     };
 
     gc = {
-      user = "root";
       automatic = true;
       interval = {
         Weekday = 0;
@@ -105,21 +103,12 @@ in {
     # OPENAI_API_KEY = ''$(${pkgs.coreutils}/bin/cat ${config.age.secrets."api-OpenAI".path})'';
   };
 
-  environment.variables = {
-    # Hack: https://github.com/ghostty-org/ghostty/discussions/2832
-    # GHOSTTY_SHELL_INTEGRATION_XDG_DIR = "/Applications/Ghostty.app/Contents/Resources/shell-integration";
-    XDG_DATA_DIRS = ["$GHOSTTY_SHELL_INTEGRATION_XDG_DIR"];
-
-    ANTHROPIC_API_KEY = ''$(${pkgs.coreutils}/bin/cat ${config.age.secrets."api-Claude".path})'';
-    OPENAI_API_KEY = ''$(${pkgs.coreutils}/bin/cat ${config.age.secrets."api-OpenAI".path})'';
-  };
-
   environment.systemPackages = with pkgs; [
     agenix.packages."${pkgs.system}".default
   ];
 
   system = {
-    stateVersion = 4;
+    stateVersion = 5;
 
     defaults = {
       NSGlobalDomain = {
