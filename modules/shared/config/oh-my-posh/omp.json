@@ -38,15 +38,15 @@
           "trailing_diamond": "",
           "foreground": "p:backgroundDark",
           "background": "p:blueDark",
-          "template": "{{.Icon}} "
+          "template": "{{ if .Env.IN_NIX_SHELL }}  {{ else }} {{.Icon}} {{ end }}"
         },
         {
-          "type": "session",
+          "type": "text",
           "style": "powerline",
           "powerline_symbol": "\ue0b4",
           "foreground": "p:backgroundDark",
           "background": "p:blueDark",
-          "template": "{{.UserName}} "
+          "template": "{{ if .Env.IN_NIX_SHELL }}nix-shell {{ else }}{{ .UserName }} {{ end }}"
         },
         {
           "type": "path",
@@ -87,7 +87,7 @@
           "powerline_symbol": "\ue0b4",
           "foreground": "p:blueDark",
           "background": "transparent",
-          "template": "  (nix-{{ .Type }})"
+          "template": "{{ if not .Env.IN_NIX_SHELL }}  (nix-{{ .Type }}){{ end }}"
         },
         {
           "type": "text",

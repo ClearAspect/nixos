@@ -1,82 +1,52 @@
-{pkgs}:
-with pkgs; [
-  # kitty
+{pkgs}: let
+  languages = import ./languages.nix {
+    inherit pkgs;
+  };
+in
+  with pkgs;
+    [
+      # Core System Utilities
+      coreutils
+      killall
+      wget
+      tree
+      fd
+      ripgrep
+      fzf
 
-  # General packages for development and system management
-  btop
-  coreutils
-  fastfetch
-  lazygit
-  lsd
-  neovim
-  helix
-  openssh
-  oh-my-posh
-  killall
-  yazi
-  wget
-  zip
-  zoxide
-  # zsh-autosuggestions
-  # zsh-syntax-highlighting
+      # Archive Management
+      zip
+      unzip
+      unrar
 
-  # Fonts
-  cozette
-  commit-mono
-  nerd-fonts.symbols-only
+      # Development Tools
+      neovim
+      helix
+      lazygit
+      tree-sitter
+      tmux
 
-  # C Language
-  libgcc
-  cmake
-  gnumake
+      # System Monitoring & Management
+      btop
+      openssh
+      pass
 
-  # Languages and Support
-  # C
-  # llvm
-  # llvm_18
-  # gcc
-  clang-tools
-  cmake
+      # Shell Enhancements
+      zoxide
+      oh-my-posh
+      # zsh-autosuggestions
+      # zsh-syntax-highlighting
 
-  # Java
-  openjdk
-  maven
-  jdt-language-server
+      # File Management & Navigation
+      yazi
+      lsd
 
-  # Python
-  python3
-  ruff
+      # System Information
+      fastfetch
 
-  # Nix
-  nixd
-  alejandra
-
-  # Other
-  lua
-  cargo
-  zigpkgs.master
-
-  # Media-related packages
-  font-awesome
-
-  # Node.js development tools
-  nodePackages.npm # globally install npm
-  nodePackages.prettier
-  nodejs
-
-  # Text and terminal utilities
-  pass
-  coreutils
-  btop
-  fzf
-  killall
-  ripgrep
-  fd
-  tree
-  tree-sitter
-  tmux
-  unrar
-  unzip
-  wget
-  zip
-]
+      # Fonts & Theming
+      cozette
+      commit-mono
+      font-awesome
+    ]
+    ++ languages
