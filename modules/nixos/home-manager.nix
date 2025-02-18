@@ -32,21 +32,21 @@ in {
 
     settings = {
       monitor = [
-        "HDMI-A-1,1920x1080@60, -1080x0, 1, transform, 1"
-        "DP-1,3840x2160@144, 0x0, 1.5, bitdepth, 10"
-        "DP-2,3840x2160@60, 2560x0, 1.5"
+        "DP-2,3840x2160@144, 0x0, 1.5, bitdepth, 10"
+        "DP-1,3840x2160@60, 0x-1440, 1.5"
+        "HDMI-A-1,1920x1080@60, -1080x-1080, 1, transform, 1"
       ];
       workspace = [
-        "1,monitor:DP-1, default:true"
-        "2,monitor:DP-1"
-        "3,monitor:DP-1"
-        "4,monitor:DP-1"
-        "5,monitor:DP-1"
-        "6,monitor:DP-2, default:true"
-        "7,monitor:DP-2"
-        "8,monitor:DP-2"
-        "9,monitor:DP-2"
-        "10,monitor:DP-2"
+        "1,monitor:DP-2, default:true"
+        "2,monitor:DP-2"
+        "3,monitor:DP-2"
+        "4,monitor:DP-2"
+        "5,monitor:DP-2"
+        "6,monitor:DP-1, default:true"
+        "7,monitor:DP-1"
+        "8,monitor:DP-1"
+        "9,monitor:DP-1"
+        "10,monitor:DP-1"
       ];
       exec-once = [
         # "waybar" #& swww-daemon & swaync
@@ -154,11 +154,11 @@ in {
 
       bind = [
         "$mainMod, T, exec, $terminal"
-        "$mainMod, C, killactive"
+        "$mainMod, Q, killactive"
         "$mainMod, M, exit"
         "$mainMod, E, exec, $fileManager"
         "$mainMod, V, togglefloating"
-        "$mainMod, R, exec, $menu"
+        "$mainMod, SPACE, exec, $menu"
         "$mainMod, P, pseudo" # dwindle
         "$mainMod, O, togglesplit" # dwindle
 

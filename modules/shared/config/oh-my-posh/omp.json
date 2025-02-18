@@ -46,7 +46,7 @@
           "powerline_symbol": "\ue0b4",
           "foreground": "p:backgroundDark",
           "background": "p:blueDark",
-          "template": "{{ if .Env.IN_NIX_SHELL }}nix-shell {{ else }}{{ .UserName }} {{ end }}"
+          "template": "{{ if .Env.IN_NIX_SHELL }}\bnix-shell {{ else }}\b{{ .UserName }} {{ end }}"
         },
         {
           "type": "path",

@@ -2,13 +2,16 @@
   description = "Starter Configuration for MacOS and NixOS";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    agenix.url = "github:ryantm/agenix";
-    home-manager.url = "github:nix-community/home-manager";
-    darwin = {
-      url = "github:LnL7/nix-darwin/master";
+    # Nix Unstable
+    # nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+
+    # Nix Stable
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
+    nix-darwin = {
+      url = "github:LnL7/nix-darwin/nix-darwin-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    home-manager.url = "github:nix-community/home-manager";
     nix-homebrew = {
       url = "github:zhaofengli-wip/nix-homebrew";
     };
@@ -24,10 +27,13 @@
       url = "github:homebrew/homebrew-cask";
       flake = false;
     };
+
     disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    agenix.url = "github:ryantm/agenix";
     secrets = {
       url = "git+ssh://git@github.com/ClearAspect/nix-secrets.git";
       flake = false;
@@ -44,24 +50,32 @@
 
     # Nightly Zig
     zig.url = "github:mitchellh/zig-overlay";
+
+    # Apple fonts
+    apple-fonts.url = "github:Lyndeno/apple-fonts.nix";
+
+    # Grub theme
+    distro-grub-themes.url = "github:AdisonCavani/distro-grub-themes";
   };
 
   outputs = {
     self,
-    darwin,
+    nixpkgs,
+    nix-darwin,
     nix-homebrew,
+    home-manager,
     homebrew-bundle,
     homebrew-core,
     homebrew-cask,
-    home-manager,
-    nixpkgs,
     disko,
     agenix,
     secrets,
-    ghostty,
-    zig,
-    catppuccin,
     hyprpanel,
+    ghostty,
+    catppuccin,
+    zig,
+    apple-fonts,
+    distro-grub-themes,
   } @ inputs: let
     user = "roanm";
     linuxSystems = ["x86_64-linux" "aarch64-linux"];
@@ -112,7 +126,7 @@
       system: let
         user = "roanm";
       in
-        darwin.lib.darwinSystem {
+        nix-darwin.lib.darwinSystem {
           inherit system;
           specialArgs = inputs;
           modules = [
@@ -157,12 +171,18 @@
             nixpkgs.overlays = [
               zig.overlays.default
               inputs.hyprpanel.overlay
+              (final: prev: {
+                inherit
+                  (apple-fonts.packages.${system})
+                  sf-pro
+                  ;
+              })
             ];
           }
           agenix.darwinModules.default
           disko.nixosModules.disko
           home-manager.nixosModules.home-manager
-          catppuccin.nixosModules.catppuccin
+          distro-grub-themes.nixosModules.${system}.default
           {
             home-manager = {
               useGlobalPkgs = true;
