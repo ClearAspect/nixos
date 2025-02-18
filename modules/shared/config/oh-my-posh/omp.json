@@ -82,14 +82,6 @@
           }
         },
         {
-          "type": "nix-shell",
-          "style": "powerline",
-          "powerline_symbol": "\ue0b4",
-          "foreground": "p:blueDark",
-          "background": "transparent",
-          "template": "{{ if not .Env.IN_NIX_SHELL }}  (nix-{{ .Type }}){{ end }}"
-        },
-        {
           "type": "text",
           "style": "plain",
           "foreground": "p:foregroundDark",
