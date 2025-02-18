@@ -2,7 +2,12 @@
   description = "Starter Configuration for MacOS and NixOS";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    # Nix Unstable
+    # nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+
+    # Nix Stable
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
+
     agenix.url = "github:ryantm/agenix";
     home-manager.url = "github:nix-community/home-manager";
     darwin = {
@@ -44,6 +49,12 @@
 
     # Nightly Zig
     zig.url = "github:mitchellh/zig-overlay";
+
+    # Apple fonts
+    apple-fonts.url = "github:Lyndeno/apple-fonts.nix";
+
+    # Grub theme
+    distro-grub-themes.url = "github:AdisonCavani/distro-grub-themes";
   };
 
   outputs = {
@@ -62,6 +73,8 @@
     zig,
     catppuccin,
     hyprpanel,
+    apple-fonts,
+    distro-grub-themes,
   } @ inputs: let
     user = "roanm";
     linuxSystems = ["x86_64-linux" "aarch64-linux"];
@@ -157,12 +170,18 @@
             nixpkgs.overlays = [
               zig.overlays.default
               inputs.hyprpanel.overlay
+              (final: prev: {
+                inherit
+                  (apple-fonts.packages.${system})
+                  sf-pro
+                  ;
+              })
             ];
           }
           agenix.darwinModules.default
           disko.nixosModules.disko
           home-manager.nixosModules.home-manager
-          catppuccin.nixosModules.catppuccin
+          distro-grub-themes.nixosModules.${system}.default
           {
             home-manager = {
               useGlobalPkgs = true;

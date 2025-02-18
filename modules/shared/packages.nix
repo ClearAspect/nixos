@@ -48,5 +48,6 @@ in
       cozette
       commit-mono
       font-awesome
+      (pkgs.nerdfonts.override {fonts = ["NerdFontsSymbolsOnly"];})
     ]
     ++ languages

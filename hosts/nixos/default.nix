@@ -1,6 +1,7 @@
 {
   agenix,
   ghostty,
+  distro-grub-themes,
   config,
   lib,
   inputs,
@@ -20,16 +21,18 @@ in {
   # Use the systemd-boot EFI boot loader.
   boot = {
     loader = {
-      # systemd-boot = {
-      #   enable = true;
-      #   configurationLimit = 4;
-      # };
+      systemd-boot = {
+        enable = false;
+        configurationLimit = 4;
+      };
       grub = {
         enable = true;
         device = "nodev";
         efiSupport = true;
         useOSProber = true;
         configurationLimit = 8;
+        # font = pkgs.sf-pro;
+        # fontSize = 16;
       };
       efi.canTouchEfiVariables = true;
       timeout = 30;
@@ -50,16 +53,17 @@ in {
     # "nvidia_drm"
     # ];
 
-    kernelPackages = pkgs.linuxPackages_latest;
-    extraModulePackages = [config.boot.kernelPackages.nvidia_x11_beta];
+    kernelPackages = pkgs.linuxPackages_6_12;
+    # extraModulePackages = [config.boot.kernelPackages.nvidia_x11_latest]; # _beta
+    extraModulePackages = [config.boot.kernelPackages.nvidiaPackages.latest];
 
     kernelModules = ["uinput"];
-    kernelParams = [
-      "nvidia-drm.modeset=1"
-      "nvidia-drm.fbdev=1"
-      "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
-      "nvidia.NVreg_EnableGpuFirmware=0"
-    ];
+    # kernelParams = [
+    #   "nvidia-drm.modeset=1"
+    #   "nvidia-drm.fbdev=1"
+    #   "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
+    #   "nvidia.NVreg_EnableGpuFirmware=0"
+    # ];
   };
 
   # Setup Nvidia Drivers
@@ -67,6 +71,7 @@ in {
     enable = true;
     enable32Bit = true;
   };
+
   services.xserver = {
     enable = true;
 
@@ -89,18 +94,18 @@ in {
         output = "HDMI-A-1";
         primary = false;
         monitorConfig = ''
-          Option "LeftOf" "DP-1"
+          Option "LeftOf" "DP-2"
           Option "Rotate" "Right"
           Option "PreferredMode" "1920x1080"
           Option "Enabled" "false"
         '';
       }
       {
-        output = "DP-1";
+        output = "DP-2";
         primary = true;
         monitorConfig = ''
+          Option "Below" "DP-1"
           Option "RightOf" "HDMI-A-1"
-          Option "LeftOf" "DP-2"
           Option "PreferredMode" "3160x2160"
         '';
       }
@@ -108,11 +113,15 @@ in {
         output = "DP-1";
         primary = false;
         monitorConfig = ''
-          Option "RightOf" "DP-1"
+          Option "Above" "DP-2"
           Option "PreferredMode" "3160x2160"
         '';
       }
     ];
+
+    displayManager.lightdm = {
+      enable = false;
+    };
   };
 
   hardware.nvidia = {
@@ -122,7 +131,7 @@ in {
     forceFullCompositionPipeline = true;
     open = false;
     nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.beta;
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
     # prime = {
     #   # sync.enable = true;
     #   nvidiaBusId = "PCI:1:0:0";
@@ -206,24 +215,19 @@ in {
     # OPENAI_API_KEY = ''$(${pkgs.coreutils}/bin/cat ${config.age.secrets."api-OpenAI".path})'';
   };
 
+  # Audio
+  hardware.pulseaudio.enable = false;
   services = {
     # Better support for general peripherals
     libinput.enable = true;
 
     colord.enable = true;
 
-    displayManager.sddm = {
-      enable = true;
-      wayland.enable = true;
-      package = pkgs.kdePackages.sddm;
-    };
-
-    autorandr = {
-      enable = true;
-    };
+    # autorandr = {
+    #   enable = true;
+    # };
 
     # Audio
-    pulseaudio.enable = false;
     pipewire = {
       enable = true;
       alsa.enable = true;
@@ -323,9 +327,15 @@ in {
   # services.pcscd.enable = true;
   # services.udev.packages = [pkgs.yubikey-personalization];
 
-  catppuccin = {
-    sddm.enable = true;
-    grub.enable = true;
+  # catppuccin = {
+  #   sddm.enable = true;
+  #   grub.enable = true;
+  # };
+
+  # Enable grub theme
+  distro-grub-themes = {
+    enable = true;
+    theme = "nixos";
   };
 
   environment.systemPackages = with pkgs; [

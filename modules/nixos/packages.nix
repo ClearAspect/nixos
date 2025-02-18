@@ -31,7 +31,9 @@ in
 
     # Tools
     ntfs3g
-
     colord
     xiccd
+
+    # Fonts
+    sf-pro
   ]
