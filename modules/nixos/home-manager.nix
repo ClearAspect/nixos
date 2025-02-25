@@ -8,7 +8,7 @@
   user = "roanm";
   xdg_configHome = "/home/${user}/.config";
   sharedPrograms = import ../shared/home-manager.nix {inherit config pkgs lib;};
-  sharedFiles = import ../shared/files.nix {inherit config pkgs;};
+  sharedFiles = import ../shared/files.nix {inherit user config pkgs;};
 in {
   home = {
     enableNixpkgsReleaseCheck = false;

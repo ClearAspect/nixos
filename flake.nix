@@ -122,6 +122,7 @@
     devShells = forAllSystems devShell;
     apps = nixpkgs.lib.genAttrs linuxSystems mkLinuxApps // nixpkgs.lib.genAttrs darwinSystems mkDarwinApps;
 
+    # Darwin Configuration
     darwinConfigurations = nixpkgs.lib.genAttrs darwinSystems (
       system: let
         user = "roanm";
@@ -130,10 +131,19 @@
           inherit system;
           specialArgs = inputs;
           modules = [
-            {nixpkgs.overlays = [zig.overlays.default];}
+            # Overlays
+            {
+              nixpkgs.overlays = [
+                # Zig
+                zig.overlays.default
+              ];
+            }
+
+            # Agenix
             agenix.darwinModules.default
+
+            # Home Manager
             home-manager.darwinModules.home-manager
-            nix-homebrew.darwinModules.nix-homebrew
             {
               home-manager = {
                 useGlobalPkgs = true;
@@ -144,6 +154,9 @@
                 };
               };
             }
+
+            # Nix Homebrew
+            nix-homebrew.darwinModules.nix-homebrew
             {
               nix-homebrew = {
                 inherit user;
@@ -162,15 +175,22 @@
         }
     );
 
+    # NixOS Configuration
     nixosConfigurations = nixpkgs.lib.genAttrs linuxSystems (system:
       nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = inputs;
         modules = [
+          # Overlays
           {
             nixpkgs.overlays = [
+              # Zig
               zig.overlays.default
+
+              # Hyprpanel
               inputs.hyprpanel.overlay
+
+              # Apple Fonts
               (final: prev: {
                 inherit
                   (apple-fonts.packages.${system})
@@ -179,10 +199,18 @@
               })
             ];
           }
+
+          # Agenix
           agenix.darwinModules.default
+
+          # Disko
           disko.nixosModules.disko
-          home-manager.nixosModules.home-manager
+
+          # Grub Theme
           distro-grub-themes.nixosModules.${system}.default
+
+          # Home Manager
+          home-manager.nixosModules.home-manager
           {
             home-manager = {
               useGlobalPkgs = true;

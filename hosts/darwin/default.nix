@@ -39,6 +39,7 @@ in {
     enable = true;
   };
 
+  # Homebrew Packages
   homebrew = {
     enable = true;
     casks = pkgs.callPackage ../../modules/darwin/casks.nix {};
@@ -92,7 +93,7 @@ in {
   #   enable = true;
   #   enableSSHSupport = true;
   # };
-  # security.pam.enableSudoTouchIdAuth = true;
+  security.pam.enableSudoTouchIdAuth = true;
 
   environment.variables = {
     # Hack: https://github.com/ghostty-org/ghostty/discussions/2832
