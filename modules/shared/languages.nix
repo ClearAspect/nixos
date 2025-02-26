@@ -19,6 +19,7 @@ with pkgs; [
   # ┃   JavaScript/TypeScript   ┃
   # ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
   biome # Language server & Formatter
+  nodePackages.npm
   nodejs
   typescript-language-server
 

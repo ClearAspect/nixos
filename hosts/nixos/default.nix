@@ -119,8 +119,8 @@ in {
       }
     ];
 
-    displayManager.lightdm = {
-      enable = false;
+    displayManager.ly = {
+      enable = true;
     };
   };
 

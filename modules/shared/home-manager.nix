@@ -31,12 +31,38 @@ in {
         src = pkgs.fetchFromGitHub {
           owner = "lilyball";
           repo = "nix-env.fish";
-          rev = "7b65bd228429e852c8fdfa07601159130a818cfa";
+          rev = "master";
           sha256 = "sha256-RG/0rfhgq6aEKNZ0XwIqOaZ6K5S4+/Y5EEMnIdtfPhk=";
+        };
+      }
+      {
+        name = "fish_logo";
+        src = pkgs.fetchFromGitHub {
+          owner = "laughedelic";
+          repo = "fish_logo";
+          rev = "master";
+          sha256 = "sha256-DZXQt0fa5LdbJ4vPZFyJf5FWB46Dbk58adpHqbiUmyY=";
         };
       }
     ];
   };
+
+  # nushell = {
+  #   enable = true;
+  #   configFile = {
+  #     text = ''
+  #       let fish_completer = {|spans|
+  #       fish --command $'complete "--do-complete=($spans | str join " ")"'
+  #       | from tsv --flexible --noheaders --no-infer
+  #       | rename value description
+  #       }
+  #
+  #       $env.config.filesize_metric = false
+  #       $env.config.table_mode = 'rounded'
+  #       $env.config.use_ls_colors = true
+  #     '';
+  #   };
+  # };
 
   oh-my-posh = {
     enable = true;
