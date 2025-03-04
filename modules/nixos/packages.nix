@@ -36,4 +36,7 @@ in
 
     # Fonts
     sf-pro
+
+    # Extras
+    gcc
   ]

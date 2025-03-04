@@ -1,9 +1,14 @@
 {pkgs}:
 with pkgs; [
+  # ┏━━━━━━━━━┓
+  # ┃   ASM   ┃
+  # ┗━━━━━━━━━┛
+  asmfmt
+  asm-lsp
+
   # ┏━━━━━━━━━━━┓
   # ┃   C/C++   ┃
   # ┗━━━━━━━━━━━┛
-  gcc
   clang-tools # Language server & formatter
   cmake
   gnumake
@@ -54,5 +59,6 @@ with pkgs; [
   # ┏━━━━━━━━━┓
   # ┃   Zig   ┃
   # ┗━━━━━━━━━┛
+  zls # Language Server (Foormatter is included with the compiler)
   zigpkgs.master
 ]
