@@ -123,6 +123,7 @@ in {
       };
       # credential.credentialStore = "gpg";
       # credential.helper = "manager";
+      pull.rebase = "false";
     };
   };
 
