@@ -47,23 +47,6 @@ in {
     ];
   };
 
-  # nushell = {
-  #   enable = true;
-  #   configFile = {
-  #     text = ''
-  #       let fish_completer = {|spans|
-  #       fish --command $'complete "--do-complete=($spans | str join " ")"'
-  #       | from tsv --flexible --noheaders --no-infer
-  #       | rename value description
-  #       }
-  #
-  #       $env.config.filesize_metric = false
-  #       $env.config.table_mode = 'rounded'
-  #       $env.config.use_ls_colors = true
-  #     '';
-  #   };
-  # };
-
   oh-my-posh = {
     enable = true;
     settings = builtins.fromJSON (builtins.unsafeDiscardStringContext (builtins.readFile ./config/oh-my-posh/omp.json));

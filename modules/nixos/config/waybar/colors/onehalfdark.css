@@ -1,0 +1,29 @@
+
+/*
+*
+* OneHalfDark Palette
+* - From Neovim
+* By: ClearAspect
+*
+*/
+
+@define-color black      #282c34;
+@define-color red        #e06c75;
+@define-color green      #98c379;
+@define-color yellow     #e5c07b;
+@define-color blue       #61afef;
+@define-color purple     #c678dd;
+@define-color cyan       #56b6c2;
+@define-color white      #dcdfe4;
+
+@define-color fg         #dcdfe4;
+@define-color bg         #282c34;
+
+@define-color comment_fg #5c6370;
+@define-color gutter_bg  #282c34;
+@define-color gutter_fg  #919baa;
+@define-color non_text   #373C45;
+@define-color cursor_line #313640;
+@define-color color_col  #313640;
+@define-color selection  #474e5d;
+@define-color vertsplit  #313640;

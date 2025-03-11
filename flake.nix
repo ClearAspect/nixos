@@ -39,8 +39,6 @@
       flake = false;
     };
 
-    hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
-
     # Best Terminal Emulator
     # ghostty.url = "git+ssh://git@github.com/ghostty-org/ghostty";
     ghostty.url = "github:ghostty-org/ghostty";
@@ -56,6 +54,12 @@
 
     # Grub theme
     distro-grub-themes.url = "github:AdisonCavani/distro-grub-themes";
+
+    # Anyrun (Wayland)
+    anyrun = {
+      url = "github:anyrun-org/anyrun";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -70,12 +74,12 @@
     disko,
     agenix,
     secrets,
-    hyprpanel,
     ghostty,
     catppuccin,
     zig,
     apple-fonts,
     distro-grub-themes,
+    anyrun,
   } @ inputs: let
     user = "roanm";
     linuxSystems = ["x86_64-linux" "aarch64-linux"];
@@ -187,9 +191,6 @@
               # Zig
               zig.overlays.default
 
-              # Hyprpanel
-              inputs.hyprpanel.overlay
-
               # Apple Fonts
               (final: prev: {
                 inherit
@@ -213,12 +214,14 @@
           home-manager.nixosModules.home-manager
           {
             home-manager = {
+              extraSpecialArgs = {inherit inputs;};
               useGlobalPkgs = true;
               useUserPackages = true;
               users.${user} = {
                 imports = [
                   ./modules/nixos/home-manager.nix
                   catppuccin.homeManagerModules.catppuccin
+                  anyrun.homeManagerModules.default
                 ];
               };
             };

@@ -1,12 +1,11 @@
-@import "colors/catppuccin-themes/mocha.css";
+@import "colors/onehalfdark.css";
 
 * {
-  font-family: "MonoLisa", "Symbols Nerd Font Mono", "FontAwesome";
+  font-family: "SF Pro Display", "Symbols Nerd Font Mono", "FontAwesome";
   font-weight: bold;
   min-height: 0;
   /* set font-size to 100% if font scaling is set to 1.00 using nwg-look */
   font-size: 100%;
-  font-feature-settings: '"calt", "liga", "zero", "ss02", "ss11"';
   padding: 1px;
   padding-top: 2px;
   padding-bottom: 2px;
@@ -14,24 +13,24 @@
 
 /* This section can be use if you want to separate waybar modules */
 .modules-left {
-  background: @base;
-  border: 0px solid @overlay0;
+  background: @bg;
+  border: 0px solid @comment_fg;
   border-radius: 10px;
   padding-top: 0px;
   padding-bottom: 0px;
 }
 
 .modules-center {
-  background: @base;
-  border: 0px solid @overlay0;
+  background: @bg;
+  border: 0px solid @comment_fg;
   border-radius: 10px;
   padding-top: 0px;
   padding-bottom: 0px;
 }
 
 .modules-right {
-  background: @base;
-  border: 0px solid @overlay0;
+  background: @bg;
+  border: 0px solid @comment_fg;
   border-radius: 10px;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -41,8 +40,8 @@ window#waybar {
   transition-property: background-color;
   transition-duration: 0.5s;
   background: transparent;
-  /* border: 2px solid @surface0; */
-  /* background: @base; */
+  /* border: 2px solid @cursor_line; */
+  /* background: @bg; */
   border-radius: 10px;
   padding-left: 5px;
   padding-right: 5px;
@@ -72,8 +71,8 @@ window#waybar.empty #window {
 
 #workspaces button:hover {
   border-radius: 10px;
-  color: @overlay0;
-  background-color: @surface0;
+  color: @comment_fg;
+  background-color: @cursor_line;
   padding-left: 2px;
   padding-right: 2px;
   animation: gradient_f 20s ease-in infinite;
@@ -81,12 +80,12 @@ window#waybar.empty #window {
 }
 
 #workspaces button.persistent {
-  color: @surface1;
+  color: @gutter_fg;
   border-radius: 10px;
 }
 
 #workspaces button.active {
-  color: @peach;
+  color: @yellow;
   border-radius: 10px;
   padding-left: 8px;
   padding-right: 8px;
@@ -114,20 +113,20 @@ window#waybar.empty #window {
 }
 
 #custom-pulseaudioicon {
-  color: @base;
-  background: @mauve;
+  color: @bg;
+  background: @purple;
   padding-left: 10px;
   padding-right: 10px;
 }
 
 #pulseaudio {
-  color: @mauve;
+  color: @purple;
   padding-left: 10px;
   padding-right: 10px;
 }
 
 #custom-clockicon {
-  color: @base;
+  color: @bg;
   background: @blue;
   padding-left: 10px;
   padding-right: 10px;
@@ -140,14 +139,14 @@ window#waybar.empty #window {
 }
 
 #custom-networkicon {
-  color: @base;
-  background: @pink;
+  color: @bg;
+  background: @cyan;
   padding-left: 10px;
   padding-right: 10px;
 }
 
 #network {
-  color: @pink;
+  color: @cyan;
   padding-left: 10px;
   padding-right: 10px;
 }

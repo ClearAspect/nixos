@@ -61,4 +61,8 @@ with pkgs; [
   # ┗━━━━━━━━━┛
   zls # Language Server (Foormatter is included with the compiler)
   zigpkgs.master
+
+  # ┏━━━━━━━━━━━┓
+  # ┃   other   ┃
+  # ┗━━━━━━━━━━━┛
 ]

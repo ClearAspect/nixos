@@ -5,14 +5,17 @@ in
   shared-packages
   ++ [
     steam
-    hyprpanel
+
+    # Hyprland Wayland
+    waybar
+    gtk-layer-shell
+    hyprpaper
     wofi
-    # kitty
+    wl-clipboard
 
     firefox
     vesktop
     discord-canary
-    rstudio
     eclipses.eclipse-java
 
     nautilus
@@ -23,11 +26,9 @@ in
     wlogout
 
     apple-cursor
-    whitesur-gtk-theme
     whitesur-icon-theme
 
     xdg-desktop-portal-hyprland
-    wl-clipboard
 
     # Tools
     ntfs3g

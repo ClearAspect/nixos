@@ -118,10 +118,6 @@ in {
         '';
       }
     ];
-
-    displayManager.ly = {
-      enable = true;
-    };
   };
 
   hardware.nvidia = {
@@ -184,6 +180,7 @@ in {
     #     fi
     #   '';
     # };
+
     fish = {
       enable = true;
     };
@@ -262,6 +259,18 @@ in {
 
     gvfs.enable = true; # Mount, trash, and other functionalities
     tumbler.enable = true; # Thumbnail support for images
+
+    # Use tuigreet
+    greetd = {
+      enable = true;
+      package = pkgs.greetd.tuigreet;
+      settings = {
+        default_session = {
+          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --remember-session --cmd Hyprland";
+          user = "${user}";
+        };
+      };
+    };
   };
 
   # Users / Me
@@ -346,6 +355,8 @@ in {
     coreutils
     pciutils
     alsa-utils
+    libsForQt5.qtstyleplugin-kvantum
+    kdePackages.qtstyleplugin-kvantum
   ];
 
   system.stateVersion = "21.05"; # Don't change this
