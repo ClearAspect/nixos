@@ -4,7 +4,6 @@ with pkgs; [
   # ┃   ASM   ┃
   # ┗━━━━━━━━━┛
   asmfmt
-  asm-lsp
 
   # ┏━━━━━━━━━━━┓
   # ┃   C/C++   ┃

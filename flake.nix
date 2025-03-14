@@ -92,7 +92,7 @@
         mkShell {
           nativeBuildInputs = with pkgs; [bash git];
           shellHook = with pkgs; ''
-            export EDITOR=vim
+            export EDITOR=nvim
           '';
         };
     };
@@ -145,20 +145,8 @@
 
             # Agenix
             agenix.darwinModules.default
-
             # Home Manager
             home-manager.darwinModules.home-manager
-            {
-              home-manager = {
-                useGlobalPkgs = true;
-                users.${user} = {
-                  imports = [
-                    ./modules/darwin/home-manager.nix
-                  ];
-                };
-              };
-            }
-
             # Nix Homebrew
             nix-homebrew.darwinModules.nix-homebrew
             {
@@ -174,7 +162,7 @@
                 autoMigrate = true;
               };
             }
-            ./hosts/darwin
+            ./hosts/darwin/default.nix
           ];
         }
     );
@@ -202,7 +190,7 @@
           }
 
           # Agenix
-          agenix.darwinModules.default
+          agenix.nixosModules.default
 
           # Disko
           disko.nixosModules.disko
