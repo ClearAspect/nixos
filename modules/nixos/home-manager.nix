@@ -89,12 +89,11 @@ in {
         # https://wiki.hyprland.org/Configuring/Variables/#blur
         blur = {
           enabled = "true";
-          size = "3";
-          passes = "5";
-          noise = "0";
+          size = "4";
+          passes = "4";
           ignore_opacity = "false";
           new_optimizations = "true";
-
+          noise = "0.0117";
           vibrancy = "0.1696";
         };
       };
@@ -169,12 +168,15 @@ in {
         "blur, logout_dialog"
         "blur, swaync-control-center"
         "blur, swaync-notiication-window"
+        "blur, anyrun"
 
         "ignorezero, swaync-control-center"
         "ignorezero, swaync-notification-window"
+        "ignorezero, anyrun"
 
         "ignorealpha 0.5, swaync-control-center"
         "ignorealpha 0.5, swaync-notification-window"
+        "ignorealpha 0.5, anyrun"
       ];
 
       "$mainMod" = "SUPER";
@@ -332,12 +334,15 @@ in {
       anyrun = {
         enable = true;
         config = {
+          x = {fraction = 0.5;};
+          y = {fraction = 0.3;};
           hideIcons = false;
           ignoreExclusiveZones = false;
           layer = "overlay";
           hidePluginInfo = true;
           closeOnClick = false;
           showResultsImmediately = true;
+          maxEntries = null;
 
           plugins =
             if inputs ? anyrun
