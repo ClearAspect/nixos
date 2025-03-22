@@ -25,6 +25,11 @@ in {
     #       source "$GHOSTTY_RESOURCES_DIR/shell-integration/fish/vendor_conf.d/ghostty-shell-integration.fish"
     #   end
     # '';
+    shellInit = ''
+      if status is-login
+        keychain --eval --quiet --nogui id_ed25519 | source
+      end
+    '';
     plugins = [
       {
         name = "nix-env";
@@ -108,6 +113,15 @@ in {
     };
   };
 
+  keychain = {
+    # Shit broken
+    enable = true;
+    enableFishIntegration = true;
+    agents = ["ssh"];
+    keys = ["id_ed25519"]; # MUST match the filename in ~/.ssh/
+    extraFlags = ["--quiet" "--nogui" "--noask"];
+  };
+
   git = {
     enable = true;
     # ignores = ["*.swp"];
@@ -127,6 +141,10 @@ in {
     };
   };
 
+  gh = {
+    enable = true;
+  };
+
   ssh = {
     enable = true;
     includes = [
@@ -140,26 +158,29 @@ in {
       )
     ];
     extraConfig = ''
+      AddKeysToAgent yes
+      IdentityFile ~/.ssh/id_ed25519
+
       Host localhomeserver
-      	HostName 192.168.10.208
-      	User super
-      	Port 22
+      HostName 192.168.10.208
+      User super
+      Port 22
 
       Host remotehomeserver
-      	HostName 99.226.10.150
-      	User super
-      	Port 22
+      HostName 99.226.10.150
+      User super
+      Port 22
 
       Host roanmDesktop
-      	HostName 192.168.10.248
-      	User roanm
-      	Port 22
-      	ForwardAgent yes
+      HostName 192.168.10.248
+      User roanm
+      Port 22
+      ForwardAgent yes
 
       Host Roans-MacBook-Pro
-      	HostName 192.168.10.223
-      	user roanm
-      	ForwardAgent yes
+      HostName 192.168.10.223
+      user roanm
+      ForwardAgent yes
 
 
       VisualHostKey=yes
