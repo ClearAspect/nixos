@@ -150,6 +150,7 @@
             home-manager.darwinModules.home-manager
             {
               home-manager = {
+                backupFileExtension = "backup";
                 useGlobalPkgs = true;
                 users.${user} = {
                   imports = [
@@ -214,6 +215,7 @@
           home-manager.nixosModules.home-manager
           {
             home-manager = {
+              backupFileExtension = "backup";
               extraSpecialArgs = {inherit inputs;};
               useGlobalPkgs = true;
               useUserPackages = true;
