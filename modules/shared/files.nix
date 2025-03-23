@@ -4,8 +4,7 @@
   ...
 }: {
   # Terms
-  ".config/kitty".source = ./config/kitty;
-  ".config/ghostty".source = ./config/ghostty;
+  ".config/kitty".source = ../../files/kitty;
 
   # ".tmux.conf".source = ./config/.tmux.conf;
   # ".tmux".source = ./.tmux;

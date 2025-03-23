@@ -5,6 +5,8 @@ in
   shared-packages
   ++ [
     steam
+    heroic
+    xboxdrv
 
     # Hyprland Wayland
     waybar
@@ -19,6 +21,7 @@ in
     eclipses.eclipse-java
 
     nautilus
+    loupe
     gnome-font-viewer
     pavucontrol
     dconf-editor
@@ -40,4 +43,6 @@ in
 
     # Extras
     gcc
+
+    pinentry-curses
   ]

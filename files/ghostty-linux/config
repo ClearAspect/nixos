@@ -10,7 +10,7 @@ theme = OneHalfDark
 # FONT 
 # --------------------------------------------------
 
-font-size = 12
+font-size = 10
 
 font-family = MonoLisa
 font-style = Medium

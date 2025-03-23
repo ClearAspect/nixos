@@ -5,7 +5,9 @@
 in
   with pkgs;
     [
-      # Core System Utilities
+      # ┏━━━━━━━━━━━━━━━━━━━━┓
+      # ┃   Core Utilities   ┃
+      # ┗━━━━━━━━━━━━━━━━━━━━┛
       coreutils
       killall
       wget
@@ -14,40 +16,68 @@ in
       ripgrep
       fzf
 
-      # Archive Management
+      # ┏━━━━━━━━━━━━━━━━━━━━━━━━┓
+      # ┃   Archive Management   ┃
+      # ┗━━━━━━━━━━━━━━━━━━━━━━━━┛
       zip
       unzip
       unrar
 
-      # Development Tools
+      # ┏━━━━━━━━━━━━━━━━━━━━━━━┓
+      # ┃   Development Tools   ┃
+      # ┗━━━━━━━━━━━━━━━━━━━━━━━┛
       neovim
       helix
       lazygit
       tree-sitter
       tmux
 
-      # System Monitoring & Management
+      # ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+      # ┃   System Monitoring & Mgmt   ┃
+      # ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
       btop
       openssh
-      pass
 
-      # Shell Enhancements
+      # ┏━━━━━━━━━━━━━━━━━━━━━━━━┓
+      # ┃   Shell Enhancements   ┃
+      # ┗━━━━━━━━━━━━━━━━━━━━━━━━┛
       zoxide
       oh-my-posh
       # zsh-autosuggestions
       # zsh-syntax-highlighting
 
-      # File Management & Navigation
+      # ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+      # ┃   File Management & Nav   ┃
+      # ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
       yazi
       lsd
 
-      # System Information
+      # ┏━━━━━━━━━━━━━━━━━━━━━━━━┓
+      # ┃   System Information   ┃
+      # ┗━━━━━━━━━━━━━━━━━━━━━━━━┛
       fastfetch
 
-      # Fonts & Theming
+      # ┏━━━━━━━━━━━━━━━━━━━━━┓
+      # ┃   Fonts & Theming   ┃
+      # ┗━━━━━━━━━━━━━━━━━━━━━┛
       cozette
       commit-mono
       font-awesome
-      (pkgs.nerdfonts.override {fonts = ["NerdFontsSymbolsOnly"];})
+      (pkgs.nerdfonts.override {
+        fonts = [
+          "FiraCode"
+          "NerdFontsSymbolsOnly"
+        ];
+      })
+
+      # ┏━━━━━━━━━━━━━━┓
+      # ┃   Security   ┃
+      # ┗━━━━━━━━━━━━━━┛
+      gnupg
+      pass
+      yubikey-manager
+      yubikey-personalization
+      pcsc-tools
+      pinentry-curses
     ]
     ++ languages

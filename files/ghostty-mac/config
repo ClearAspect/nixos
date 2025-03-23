@@ -1,0 +1,58 @@
+# --------------------------------------------------
+# PALLETE
+# --------------------------------------------------
+
+#theme = catppuccin-mocha
+#theme = nord
+theme = OneHalfDark
+
+# --------------------------------------------------
+# FONT 
+# --------------------------------------------------
+
+font-size = 10
+
+font-family = MonoLisa
+font-style = Medium
+font-style-bold = Bold
+font-style-italic = Medium Italic
+font-style-bold-italic = Bold Italic
+
+font-feature = zero
+font-feature = calt
+font-feature = liga
+font-feature = ss11 
+font-feature = ss02
+
+
+# --------------------------------------------------
+# WINDOW 
+# --------------------------------------------------
+
+gtk-titlebar = false
+window-theme = ghostty
+
+#background-opacity = 0.60
+#background-blur-radius = 20
+
+custom-shader-animation = true
+# custom-shader = ./warp6.glsl
+# custom-shader = ./bettercrt.glsl
+# custom-shader = ./bloom.glsl
+# custom-shader = ./glitchy.glsl
+# custom-shader = ./galaxy.glsl
+
+
+
+# --------------------------------------------------
+# KEYBINDS
+# --------------------------------------------------
+
+keybind = ctrl+shift+backslash=new_split:right
+keybind = ctrl+shift+minus=new_split:down
+
+keybind = ctrl+shift+h=goto_split:left
+keybind = ctrl+shift+j=goto_split:down
+keybind = ctrl+shift+k=goto_split:up
+keybind = ctrl+shift+l=goto_split:right
+keybind = ctrl+shift+enter=toggle_split_zoom
