@@ -48,7 +48,10 @@ in {
   services.tumbler.enable = true; # Thumbnail support for images
 
   # Time Zone
-  time.timeZone = "Canada/Eastern";
+  time = {
+    hardwareClockInLocalTime = true;
+    timeZone = "Canada/Eastern";
+  };
 
   # Manages keys and such
   programs = {
