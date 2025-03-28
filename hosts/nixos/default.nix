@@ -75,6 +75,10 @@ in {
     #   startAgent = true;
     # };
 
+    nix-ld = {
+      enable = true;
+    };
+
     fish = {
       enable = true;
     };

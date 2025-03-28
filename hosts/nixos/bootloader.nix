@@ -5,6 +5,7 @@
 }: {
   # Use the systemd-boot EFI boot loader.
   boot = {
+    supportedFilesystems = ["ntfs"];
     loader = {
       systemd-boot = {
         enable = false;

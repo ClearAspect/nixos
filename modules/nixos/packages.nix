@@ -4,22 +4,35 @@ with pkgs; let
 in
   shared-packages
   ++ [
-    steam
-    heroic
-    xboxdrv
-
-    # Hyprland Wayland
+    # ┏━━━━━━━━━━━━━━━━━━━┓
+    # ┃   Wayland Tools   ┃
+    # ┗━━━━━━━━━━━━━━━━━━━┛
     waybar
     gtk-layer-shell
     hyprpaper
     wofi
     wl-clipboard
+    xdg-desktop-portal-hyprland
 
+    # ┏━━━━━━━━━━━┓
+    # ┃   Games   ┃
+    # ┗━━━━━━━━━━━┛
+    steam
+    heroic
+    xboxdrv
+
+    # ┏━━━━━━━━━━━━━━━━━━┓
+    # ┃   Applications   ┃
+    # ┗━━━━━━━━━━━━━━━━━━┛
     firefox
     vesktop
     discord-canary
     eclipses.eclipse-java
+    atlauncher
 
+    # ┏━━━━━━━━━━━━━━━━━━┓
+    # ┃   System Tools   ┃
+    # ┗━━━━━━━━━━━━━━━━━━┛
     nautilus
     loupe
     gnome-font-viewer
@@ -28,21 +41,19 @@ in
     nwg-look
     wlogout
 
-    apple-cursor
-    whitesur-icon-theme
-
-    xdg-desktop-portal-hyprland
-
-    # Tools
+    # ┏━━━━━━━━━━━━━━━━━━┓
+    # ┃   System Utils   ┃
+    # ┗━━━━━━━━━━━━━━━━━━┛
     ntfs3g
     colord
     xiccd
-
-    # Fonts
-    sf-pro
-
-    # Extras
     gcc
-
     pinentry-curses
+
+    # ┏━━━━━━━━━━━━━━━━━━┓
+    # ┃   Theming & UI   ┃
+    # ┗━━━━━━━━━━━━━━━━━━┛
+    apple-cursor
+    whitesur-icon-theme
+    sf-pro
   ]
