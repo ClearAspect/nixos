@@ -5,7 +5,6 @@
 }: {
   fish = {
     enable = true;
-    # catppuccin.enable = true;
     shellAliases = {
       cd = "z ";
       ls = "lsd --color=auto";

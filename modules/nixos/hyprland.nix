@@ -29,8 +29,8 @@
         "10,monitor:DP-1"
       ];
       exec-once = [
-        "waybar" #& swww-daemon & swaync
-        "hyprpaper"
+        # "hyprpaper"
+        "swww img /home/roanm/Pictures/nix-wallpaper-nineish-dark-gray.png --resize fit --transition-type wipe"
       ];
       general = {
         gaps_in = "4";
@@ -247,6 +247,13 @@
       ];
       input = {
         kb_layout = "us";
+
+        /*
+        KeyRepeat = 2; # Values: 120, 90, 60, 30, 12, 6, 2
+        InitialKeyRepeat = 25; # Values: 120, 94, 68, 35, 25, 15
+        */
+        repeat_rate = "40";
+        repeat_delay = "500";
 
         follow_mouse = "1";
         force_no_accel = "1";

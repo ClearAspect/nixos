@@ -7,10 +7,8 @@ in
     # ┏━━━━━━━━━━━━━━━━━━━┓
     # ┃   Wayland Tools   ┃
     # ┗━━━━━━━━━━━━━━━━━━━┛
-    waybar
+    waypaper
     gtk-layer-shell
-    hyprpaper
-    wofi
     wl-clipboard
     xdg-desktop-portal-hyprland
 
@@ -29,6 +27,7 @@ in
     discord-canary
     eclipses.eclipse-java
     atlauncher
+    prismlauncher
 
     # ┏━━━━━━━━━━━━━━━━━━┓
     # ┃   System Tools   ┃

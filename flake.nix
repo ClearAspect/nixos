@@ -2,11 +2,14 @@
   description = "Starter Configuration for MacOS and NixOS";
 
   inputs = {
-    # Nix Unstable
-    # nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    # Nixpkgs
+    # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    # Unstable
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    # Stable
+    # nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
+    # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-    # Nix Stable
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
     nix-darwin = {
       url = "github:LnL7/nix-darwin/nix-darwin-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -43,9 +46,6 @@
     # ghostty.url = "git+ssh://git@github.com/ghostty-org/ghostty";
     ghostty.url = "github:ghostty-org/ghostty";
 
-    # Best Colour Scheme
-    catppuccin.url = "github:catppuccin/nix";
-
     # Nightly Zig
     zig.url = "github:mitchellh/zig-overlay";
 
@@ -75,7 +75,6 @@
     agenix,
     secrets,
     ghostty,
-    catppuccin,
     zig,
     apple-fonts,
     distro-grub-themes,
@@ -222,7 +221,6 @@
               users.${user} = {
                 imports = [
                   ./modules/nixos/home-manager.nix
-                  catppuccin.homeManagerModules.catppuccin
                   anyrun.homeManagerModules.default
                 ];
               };

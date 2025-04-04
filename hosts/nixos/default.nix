@@ -89,6 +89,11 @@ in {
     };
   };
 
+  programs.nautilus-open-any-terminal = {
+    enable = true;
+    terminal = "ghostty";
+  };
+
   environment.sessionVariables = {
     XCURSOR_THEME = "macOS";
     XCURSOR_SIZE = "24";

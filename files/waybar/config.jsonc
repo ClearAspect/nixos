@@ -45,14 +45,14 @@
 		"tooltip": false
 	},
 
-	"custom/pacman": {
-		"format": " {} updates",
-		"interval": 600,
-		"exec": "checkupdates | wc -l",
-		"exec-if": "exit 0",
-		"signal": 8,
-		"tooltip": false
-	},
+	//"custom/pacman": {
+	//	"format": " {} updates",
+	//	"interval": 600,
+	//	"exec": "checkupdates | wc -l",
+	//	"exec-if": "exit 0",
+	//	"signal": 8,
+	//	"tooltip": false
+	//},
 
 	"custom/power": {
 		"format": " ",
