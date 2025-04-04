@@ -17,7 +17,6 @@ in
     # ┗━━━━━━━━━━━┛
     steam
     heroic
-    xboxdrv
 
     # ┏━━━━━━━━━━━━━━━━━━┓
     # ┃   Applications   ┃

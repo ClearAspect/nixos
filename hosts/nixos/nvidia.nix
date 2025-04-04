@@ -4,23 +4,25 @@
   ...
 }: {
   # Setup Nvidia Drivers
-  hardware.graphics = {
-    enable = true;
-    enable32Bit = true;
-  };
+  hardware = {
+    graphics = {
+      enable = true;
+      enable32Bit = true;
+    };
 
-  hardware.nvidia = {
-    modesetting.enable = true;
-    powerManagement.enable = false;
-    powerManagement.finegrained = false;
-    forceFullCompositionPipeline = true;
-    open = false;
-    nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
-    # prime = {
-    #   # sync.enable = true;
-    #   nvidiaBusId = "PCI:1:0:0";
-    # };
+    nvidia = {
+      modesetting.enable = true;
+      powerManagement.enable = false;
+      powerManagement.finegrained = false;
+      forceFullCompositionPipeline = true;
+      open = false;
+      nvidiaSettings = true;
+      package = config.boot.kernelPackages.nvidiaPackages.beta;
+      # prime = {
+      #   # sync.enable = true;
+      #   nvidiaBusId = "PCI:1:0:0";
+      # };
+    };
   };
 
   services.xserver.videoDrivers = ["nvidia"];

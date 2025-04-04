@@ -45,11 +45,8 @@ window-theme = ghostty
 #background-blur-radius = 20
 
 custom-shader-animation = true
-# custom-shader = ./warp6.glsl
-# custom-shader = ./bettercrt.glsl
+custom-shader = ./bettercrt.glsl
 # custom-shader = ./bloom.glsl
-# custom-shader = ./glitchy.glsl
-# custom-shader = ./galaxy.glsl
 
 
 

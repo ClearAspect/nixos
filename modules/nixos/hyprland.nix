@@ -30,8 +30,14 @@
       ];
       exec-once = [
         # "hyprpaper"
+        "waybar"
         "swww img /home/roanm/Pictures/nix-wallpaper-nineish-dark-gray.png --resize fit --transition-type wipe"
       ];
+
+      misc = {
+        disable_splash_rendering = "true";
+        disable_hyprland_logo = "true";
+      };
       general = {
         gaps_in = "4";
         gaps_out = "4";

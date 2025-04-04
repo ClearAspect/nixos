@@ -3,13 +3,14 @@
   pkgs,
   ...
 }: {
-  hardware.pulseaudio.enable = false;
-  services.
+  services = {
+    pulseaudio.enable = false;
     pipewire = {
-    enable = true;
-    alsa.enable = true;
-    pulse.enable = true;
-    jack.enable = true;
+      enable = true;
+      alsa.enable = true;
+      pulse.enable = true;
+      jack.enable = true;
+    };
   };
 
   services = {

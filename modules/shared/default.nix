@@ -9,6 +9,8 @@
       allowBroken = true;
       allowInsecure = false;
       allowUnsupportedSystem = true;
+
+      nvidia.acceptLicense = true;
     };
   };
 }

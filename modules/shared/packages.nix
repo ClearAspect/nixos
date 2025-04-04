@@ -27,11 +27,11 @@ in
       # ┃   Development Tools   ┃
       # ┗━━━━━━━━━━━━━━━━━━━━━━━┛
       neovim
-      neovide
       helix
       lazygit
       tree-sitter
       tmux
+      asciinema
 
       # ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
       # ┃   System Monitoring & Mgmt   ┃
@@ -64,12 +64,8 @@ in
       cozette
       commit-mono
       font-awesome
-      (pkgs.nerdfonts.override {
-        fonts = [
-          "FiraCode"
-          "NerdFontsSymbolsOnly"
-        ];
-      })
+      nerd-fonts.fira-code
+      nerd-fonts.symbols-only
       jetbrains-mono
 
       # ┏━━━━━━━━━━━━━━┓
