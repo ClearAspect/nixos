@@ -10,9 +10,18 @@ theme = OneHalfDark
 # FONT 
 # --------------------------------------------------
 
-font-size = 16
+font-size = 14
 
-font-family = JetBrains Mono
+# font-family = JetBrains Mono
+# font-style = Medium
+# font-style-bold = Bold
+# font-style-italic = Medium Italic
+# font-style-bold-italic = Bold Italic
+#
+# font-feature = zero
+# font-feature = calt
+
+font-family = MonoLisa
 font-style = Medium
 font-style-bold = Bold
 font-style-italic = Medium Italic
@@ -20,18 +29,9 @@ font-style-bold-italic = Bold Italic
 
 font-feature = zero
 font-feature = calt
-
-# font-family = MonoLisa
-# font-style = Medium
-# font-style-bold = Bold
-# font-style-italic = Medium Italic
-# font-style-bold-italic = Bold Italic
-
-# font-feature = zero
-# font-feature = calt
-# font-feature = liga
-# font-feature = ss11 
-# font-feature = ss02
+font-feature = liga
+font-feature = ss11 
+font-feature = ss02
 
 
 # --------------------------------------------------

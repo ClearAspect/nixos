@@ -31,22 +31,26 @@ in {
 
   # Screen lock
   services = {
-    hyprpaper = {
+    swww = {
       enable = true;
-      settings = {
-        ipc = "on";
-        splash = false;
-        splash_offset = 2.0;
-
-        preload = ["~/Pictures/blue_distortion_1.png"];
-
-        wallpaper = [
-          "DP-1,~/Pictures/blue_distortion_1.png"
-          "DP-2,~/Pictures/blue_distortion_1.png"
-          "HDMI-A-1,~/Pictures/blue_distortion_1.png"
-        ];
-      };
     };
+
+    # hyprpaper = {
+    #   enable = true;
+    #   settings = {
+    #     ipc = "on";
+    #     splash = false;
+    #     splash_offset = 2.0;
+    #
+    #     preload = ["~/Pictures/blue_distortion_1.png"];
+    #
+    #     wallpaper = [
+    #       "DP-1,~/Pictures/blue_distortion_1.png"
+    #       "DP-2,~/Pictures/blue_distortion_1.png"
+    #       "HDMI-A-1,~/Pictures/blue_distortion_1.png"
+    #     ];
+    #   };
+    # };
   };
 
   programs = {} // programs // sharedPrograms;

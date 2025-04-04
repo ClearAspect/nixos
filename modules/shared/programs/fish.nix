@@ -5,9 +5,8 @@
 }: {
   fish = {
     enable = true;
-    # catppuccin.enable = true;
     shellAliases = {
-      cd = "z ";
+      cd = "z";
       ls = "lsd --color=auto";
       grep = "grep --color=auto";
       vi = "nvim";

@@ -27,6 +27,7 @@ in
       # ┃   Development Tools   ┃
       # ┗━━━━━━━━━━━━━━━━━━━━━━━┛
       neovim
+      neovide
       helix
       lazygit
       tree-sitter

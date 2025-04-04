@@ -7,7 +7,6 @@
     enable = true;
     plugins = with pkgs.tmuxPlugins; [
       vim-tmux-navigator
-      catppuccin
       {
         plugin = resurrect; # Used by tmux-continuum
 
